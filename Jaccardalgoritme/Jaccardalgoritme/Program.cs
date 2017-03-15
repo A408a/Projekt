@@ -19,7 +19,8 @@ namespace Jaccardalgoritme
             */
             
             // Creating an instance of the LoadEachWordToList class. 
-            LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\Pizzagate1.txt");
+            LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\Pizzagate1.txt");
+            LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\Pizzagate2.txt");
 
             //tekstB.LoadText();
 
@@ -29,17 +30,24 @@ namespace Jaccardalgoritme
             //}
 
             // Creating an instance of the JaccardSimilarity class called nytekst.
-            JaccardSimilarity nytekst = new JaccardSimilarity();
+            JaccardSimilarity nytekstA = new JaccardSimilarity();
+            JaccardSimilarity nytekstB = new JaccardSimilarity();
 
             /* Calling the GetShingles method from the JaccardSimilarity class on the object.
              *  The parameter is a text, where each word is an element in a List. 
              *  */
-            nytekst.GetShingles(tekstB.Words);
+            nytekstA.GetShingles(tekstA.Words);
+            nytekstB.GetShingles(tekstB.Words);
 
-            foreach (string item in nytekst.shingles)
-            {
-                Console.WriteLine(item);
-            }
+            double jaccardSimilarity = nytekstA.CalculateSimilarity(nytekstA.shingles, nytekstA.shingles);
+            Console.WriteLine("The Jaccard similarity of the two texst is: " + jaccardSimilarity);
+
+
+            //foreach (string item in nytekstA.shingles)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
 
 
             /*LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 projekt\P2\Program\Jaccard\stopwords.txt");

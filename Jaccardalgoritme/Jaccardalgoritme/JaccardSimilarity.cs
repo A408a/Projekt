@@ -41,6 +41,23 @@ namespace Jaccardalgoritme
             }
 
         }
+
+        public double CalculateSimilarity(List<string> shingleSetOne, List<string> shingleSetTwo)
+        {
+            double similarElements = 0;
+
+            foreach (string item in shingleSetOne)
+            {
+                if (shingleSetTwo.Contains(item))
+                    ++similarElements; 
+            }
+
+            double jaccardValue = similarElements / ((shingleSetOne.Count + shingleSetTwo.Count)-similarElements);
+
+            return jaccardValue;
+            //return similarElements;
+
+        }
           
     }
 }
