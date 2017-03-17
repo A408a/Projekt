@@ -10,7 +10,7 @@ namespace Jaccardalgoritme
     {
       
         // Making a List of strings which consists of stopwords. 
-        public List<string> stopWords = System.IO.File.ReadAllLines(@"C:\Users\Aryan\Dropbox\P1 projekt\P2\Program\Jaccard\stopwords2.txt").ToList();
+        public List<string> stopWords = System.IO.File.ReadAllLines(@"C:\Users\Aryan\Dropbox\P1 projekt\P2\Program\Jaccard\stopwords3.txt").ToList();
 
         // Making a List of strings which will be used to store shinglevalues from a document. 
         public List<string> shingles = new List<string>();
@@ -45,14 +45,23 @@ namespace Jaccardalgoritme
         public double CalculateSimilarity(List<string> shingleSetOne, List<string> shingleSetTwo)
         {
             double similarElements = 0;
+           // List<string> elements = new List<string>();
 
-            foreach (string item in shingleSetOne)
-            {
-                if (shingleSetTwo.Contains(item))
-                    ++similarElements; 
-            }
+            //foreach (string item in shingleSetOne)
+            //{
+            //    if (shingleSetTwo.Contains(item))
+            //    {
+            //        //elements.Add(item);
+            //        ++similarElements;
+            //    } 
+            //}
 
             double jaccardValue = similarElements / ((shingleSetOne.Count + shingleSetTwo.Count)-similarElements);
+           // Console.WriteLine("There is: " + similarElements + " similar elements for the two newsarticles");
+            //foreach (string item in elements)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             return jaccardValue;
             //return similarElements;

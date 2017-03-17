@@ -17,10 +17,15 @@ namespace Jaccardalgoritme
             Console.ReadLine();
             System.IO.File.WriteAllText(@"C:\Users\Aryan\Dropbox\P1 projekt\P2\Program\Jaccard\stopwords2.txt", nytekst);
             */
+
+            //Console.WriteLine("Enter the name of the first text file with .txt");
+            //string firstText = Console.ReadLine();
+            //Console.WriteLine("Enter the name of the second text file with .txt");
+            //string secondText = Console.ReadLine();
             
             // Creating an instance of the LoadEachWordToList class. 
-            LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\Pizzagate1.txt");
-            LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\Pizzagate2.txt");
+            LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\tekst1.txt");
+            LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\tekst2.txt");
 
             //tekstB.LoadText();
 
@@ -39,8 +44,8 @@ namespace Jaccardalgoritme
             nytekstA.GetShingles(tekstA.Words);
             nytekstB.GetShingles(tekstB.Words);
 
-            double jaccardSimilarity = nytekstA.CalculateSimilarity(nytekstA.shingles, nytekstA.shingles);
-            Console.WriteLine("The Jaccard similarity of the two texst is: " + jaccardSimilarity);
+            double jaccardSimilarity = nytekstA.CalculateSimilarity(nytekstA.shingles, nytekstB.shingles);
+            Console.WriteLine("The Jaccard similarity of the two texts is: " + jaccardSimilarity);
 
 
             //foreach (string item in nytekstA.shingles)
@@ -48,7 +53,7 @@ namespace Jaccardalgoritme
             //    Console.WriteLine(item);
             //}
 
-
+          
 
             /*LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 projekt\P2\Program\Jaccard\stopwords.txt");
             tekstA.LoadText();
