@@ -23,7 +23,7 @@ namespace Jaccardalgoritme
             LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\" + secondText);
 
             
-            // Creating an instance of the JaccardSimilarity class called nytekst.
+            // Creating instances of the JaccardSimilarity class called nytekstA and nytekstB.
             JaccardSimilarity nytekstA = new JaccardSimilarity();
             JaccardSimilarity nytekstB = new JaccardSimilarity();
 
