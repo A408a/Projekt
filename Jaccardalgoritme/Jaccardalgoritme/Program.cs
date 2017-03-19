@@ -13,14 +13,14 @@ namespace Jaccardalgoritme
         {
             
 
-            Console.WriteLine("Enter the name of the first text file with .txt");
+            Console.WriteLine("Enter the name of the first text file");
             string firstText = Console.ReadLine();
-            Console.WriteLine("Enter the name of the second text file with .txt");
+            Console.WriteLine("Enter the name of the second text file");
             string secondText = Console.ReadLine();
 
             // Creating an instance of the LoadEachWordToList class. 
-            LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\" + firstText );
-            LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\" + secondText);
+            LoadEachWordToList tekstA = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\" + firstText + ".txt");
+            LoadEachWordToList tekstB = new LoadEachWordToList(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database\" + secondText + ".txt");
 
             
             // Creating instances of the JaccardSimilarity class called nytekstA and nytekstB.
