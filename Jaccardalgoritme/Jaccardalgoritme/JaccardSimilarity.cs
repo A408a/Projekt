@@ -8,7 +8,7 @@ namespace Jaccardalgoritme
 {
     class JaccardSimilarity
     {
-        private int total = 0;
+        //private int total = 0;
       
         // Making a List of strings which consists of stopwords. 
         public List<string> stopWords = System.IO.File.ReadAllLines(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Implementationer\Jaccard\stopwords2.txt").ToList();
@@ -28,7 +28,7 @@ namespace Jaccardalgoritme
             // foreach loop that iterates over the text. 
             foreach (string item in tekst)
             {
-                total++;
+                //total++;
                 if (stopWords.Contains(item.ToLower()))
                 {
                     shingles.Add(item + " " + tekst[i+1] + " " + tekst[i+2]);
@@ -40,8 +40,8 @@ namespace Jaccardalgoritme
                 if (i == (tekst.Count - 2))
                     break;
             }
-            Console.WriteLine(total);
-            Console.ReadLine();
+            //Console.WriteLine(total);
+            
         }
 
         public double CalculateSimilarity(List<string> shingleSetOne, List<string> shingleSetTwo)

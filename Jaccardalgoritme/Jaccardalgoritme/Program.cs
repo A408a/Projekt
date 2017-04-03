@@ -35,6 +35,11 @@ namespace Jaccardalgoritme
 
             double jaccardSimilarity = nytekstA.CalculateSimilarity(nytekstA.shingles, nytekstB.shingles);
             Console.WriteLine("The Jaccard similarity of the two texts is: " + jaccardSimilarity);
+            //Console.WriteLine("Shigles for tekst A: ");
+            //foreach (string item in nytekstA.shingles)
+            //{
+            //    Console.WriteLine(item);
+            //}
 
             Console.ReadLine();
 
