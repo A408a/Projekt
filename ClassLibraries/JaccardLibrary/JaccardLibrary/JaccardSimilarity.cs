@@ -42,9 +42,8 @@ namespace JaccardSimilarityLibrary
 
         private void GetShingles(List<string> tekst, HashSet<string> shingles) 
         {
-            int numberOfElements = tekst.Count;
                
-            for(int i = 0; i < numberOfElements; ++i) // Iterates through the text 
+            for(int i = 0; i < tekst.Count; ++i) // Iterates through the text 
             {
                 if (stopWords.Contains(tekst[i].ToLower())) // Happens if the current word is a stopword
 
