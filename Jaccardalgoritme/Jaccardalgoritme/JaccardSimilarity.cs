@@ -8,10 +8,12 @@ namespace Jaccardalgoritme
 {
     class JaccardSimilarity
     {
+
+        
         //private int total = 0;
       
         // Making a List of strings which consists of stopwords. 
-        public List<string> stopWords = System.IO.File.ReadAllLines(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Implementationer\Jaccard\stopwords2.txt").ToList();
+        public List<string> stopWords = System.IO.File.ReadAllLines(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Implementationer\Gamle implementationer\Jaccard\stopwords2.txt").ToList();
 
         // Making a List of strings which will be used to store shinglevalues from a document. 
         public List<string> shingles = new List<string>();
@@ -51,8 +53,8 @@ namespace Jaccardalgoritme
             
             // Skal denne udregning deles op i to, ved at beregne værdien af union i en anden beregning. 
             double jaccardValue = (double)similarElements.Count / (double)(shingleSetOne.Union(shingleSetTwo).ToList().Count);
-            Console.WriteLine("similar Elements: " + similarElements.Count);
-            Console.WriteLine("Union size: " + (shingleSetOne.Union(shingleSetTwo).ToList().Count));
+            //Console.WriteLine("similar Elements: " + similarElements.Count);
+            //Console.WriteLine("Union size: " + (shingleSetOne.Union(shingleSetTwo).ToList().Count));
 
             return jaccardValue;
       
