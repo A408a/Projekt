@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 // Remove article: Fjern inde i trashbin
 // Fjerne = navn
@@ -48,16 +49,16 @@ namespace ChangeDatabase
             string destFile = System.IO.Path.Combine(TargetPath, FileName);
 
             // If folder is not found, create one.
-            if (!System.IO.Directory.Exists(TargetPath))
+            if (!Directory.Exists(TargetPath))
             {
-                System.IO.Directory.CreateDirectory(TargetPath);
+                Directory.CreateDirectory(TargetPath);
             }
             // Copy file to chosen file. Overwrite if file is already there
-            System.IO.File.Copy(sourceFile, destFile, true);
+            File.Copy(sourceFile, destFile, true);
 
             // If file is in both source and dest. Delete file in source.
-            if (System.IO.File.Exists(destFile) && System.IO.File.Exists(sourceFile))
-                System.IO.File.Delete(sourceFile);
+            if (File.Exists(destFile) && System.IO.File.Exists(sourceFile))
+                File.Delete(sourceFile);
 
             Console.WriteLine("done");
             Console.ReadLine();
@@ -70,18 +71,23 @@ namespace ChangeDatabase
             // for at lave en txtfil, brug File.WriteAllLines
             // https://msdn.microsoft.com/da-dk/library/8bh11f1k.aspx
 
+            // Tilføjer dato til filnavnet på nyhedsartiklen. 
+            Console.WriteLine("Please enter the date, the newsarticle was written in format dd_mm_yy_Name");
+            string dateOfArticle = Console.ReadLine();
+            FileName = dateOfArticle + FileName;
+
             // Opretter path for fil og filens tekst.
             string destFile = System.IO.Path.Combine(SourcePath, FileName);
             string text = "YabbaDabbaDUUU";
 
             // Sikre sig at der ikke bliver overwrited.
-            if (!System.IO.File.Exists(destFile))
-                System.IO.File.WriteAllText(destFile, text);
+            if (!File.Exists(destFile))
+                File.WriteAllText(destFile, text);
             else
                 Console.WriteLine("Article already in database");
 
             // Kontrol af, at alt virkede.
-            if(System.IO.File.Exists(destFile))
+            if(File.Exists(destFile))
                 Console.WriteLine("Done");
             else
                 Console.WriteLine("Fail");
