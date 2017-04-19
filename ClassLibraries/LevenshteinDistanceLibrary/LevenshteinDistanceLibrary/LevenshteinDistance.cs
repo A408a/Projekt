@@ -14,7 +14,6 @@ namespace LevenshteinDistanceLibrary
         public int TotalCount = 0;
         private int _charsInTextA;
         private int _charsInTextB;
-        private int _minimumChars;
         private int _linesInTextA;
         private int _linesInTextB;
         private double value = 0;
@@ -34,18 +33,12 @@ namespace LevenshteinDistanceLibrary
             this.CompareTexts();
         }
 
-        private void FindMinAmountOfChars()
-        {
-            _minimumChars = Math.Min(_charsInTextA, _charsInTextB);
-        }
-
         public void CompareTexts()
         {
             if (_charsInTextA > _charsInTextB)  //Hvis tekst A er større end tekst B lægges A i B, og B i A
             {
                 Swap();
             }
-            FindMinAmountOfChars(); //Finder antal chars fra den mindste tekst
 
             for (int i = 0; i < _linesInTextA; i++) //Hver linje 'i' i tekst A bliver kørt igennem hver linje 'j' i tekst B
             {
@@ -56,16 +49,31 @@ namespace LevenshteinDistanceLibrary
                         ListLevDis.Add(CalcLevenshteinDistance(Basis[i], Target[j])); //Beregner Levenshtein Distance
                                                                                       //Returværdien lægges i en liste
                     }
-
                 }
                 levenshteinDistanceDouble += ListLevDis.Min(); //Den mindste LD for hver linje i tekst A i forhold til tekst B
                 //Total += ListLevDis.Capacity;
                 //Total += ListLevDis.Capacity;//compoundassignes til levenshteinDistanceDouble
                 ListLevDis.Clear();  //Listen bliver clearet
             }
-            double LevDisPct = ((1 - (levenshteinDistanceDouble / _minimumChars)) * 100); //Finder LD i procent
+            double LevDisPct = ((1 - (levenshteinDistanceDouble / _charsInTextA)) * 100); //Finder LD i procent
             value = Math.Round(LevDisPct, 2);  //Afrunder værdien til 2 decimaler
+        }
 
+        public void Swap() //Ombytter tekst A og tekst B
+        {
+            List<string> tempList = new List<string>();
+
+            tempList = Basis;
+            Basis = Target;
+            Target = tempList;
+
+            int tempChars = _charsInTextA;
+            _charsInTextA = _charsInTextB;
+            _charsInTextB = tempChars;
+
+            int tempLines = _linesInTextA;
+            _linesInTextA = _linesInTextB;
+            _linesInTextB = tempLines;
         }
 
         public int CalcLevenshteinDistance(string Basis, string Target) //Beregner Levenshtein Distance
@@ -102,24 +110,8 @@ namespace LevenshteinDistanceLibrary
         }
 
 
-        public void Swap() //Ombytter tekst A og tekst B
-        {
-            List<string> tempList = new List<string>();
 
-            tempList = Basis;
-            Basis = Target;
-            Target = tempList;
-
-            int tempChars = _charsInTextA;
-            _charsInTextA = _charsInTextB;
-            _charsInTextB = tempChars;
-
-            int tempLines = _linesInTextA;
-            _linesInTextA = _linesInTextB;
-            _linesInTextB = tempLines;
-        }
-
-        public void Print() //Der printes - A Work in Progress
+        public void Print() //Der printes
         {
 //            Console.WriteLine(Total);
             Console.WriteLine($"Levenshtein similarity: {value}%");
