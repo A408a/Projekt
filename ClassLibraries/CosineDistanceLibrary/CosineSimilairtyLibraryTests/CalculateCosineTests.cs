@@ -15,7 +15,7 @@ namespace CosineSimilarityLibrary.Tests
         public double DotProductTest()
         {
             
-            List<string> TryVector1 = new CalculateCosine();
+            //List<string> TryVector1 = new CalculateCosine();
             List<int> TryVector2 = new List<int>();
 
             
