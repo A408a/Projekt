@@ -31,7 +31,7 @@ namespace CosineSimilarityLibrary
         private void ReadNoun()
         {
             var stringSeperator = new string[] { Environment.NewLine };
-            string[] nouns = System.IO.File.ReadAllLines(@"C:\Users\Jesper\Dropbox\AAU\P2\Noter\nouns.txt");
+            string[] nouns = System.IO.File.ReadAllLines(@"C:\Users\Marcus\Dropbox\AAU\P2\Noter\nouns.txt");
             CreateVector(nouns);
         }
 
@@ -64,7 +64,7 @@ namespace CosineSimilarityLibrary
             return dotProduct / (magnitudeOfA * magnitudeOfB);
         }
 
-        private double DotProduct(List<int> vector1, List<int> vector2)
+        public double DotProduct(List<int> vector1, List<int> vector2)
         {
             double dotProduct = 0;
             for (int i = 0; i < vector1.Count; i++)
