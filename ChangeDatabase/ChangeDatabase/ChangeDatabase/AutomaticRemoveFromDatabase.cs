@@ -62,7 +62,6 @@ namespace ChangeDatabase
             catch (FormatException)
             {
                 // month or year was not converted to int. It will simply be ignored.
-                
             }
         }
 
