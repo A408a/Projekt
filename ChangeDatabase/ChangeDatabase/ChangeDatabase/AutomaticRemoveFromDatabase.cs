@@ -5,18 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-// Efter "3" måneder, skal en artikel fjernes.
-// For dato på artikel:
-// dd_mm_yy_NAVN
-
-
-
-    // Se fil navn - se directoryinfo
-    // kontrol af dato
-    // Fjern fil
-    // I ADD skal der tilføjes dd_mm_yy 
-
-
 namespace ChangeDatabase
 {
     class AutomaticRemoveFromDatabase
@@ -42,6 +30,10 @@ namespace ChangeDatabase
             {
                 int month = Int32.Parse(File.Substring(3, 2));
                 int year = Int32.Parse(File.Substring(6, 4));
+
+                if (year > DateTime.Now.Year || year < 0 || month > 12 || month < 0)
+                    throw new ArgumentException();
+
                 // If current year is equal to article year
                 if (year == DateTime.Now.Year)
                 {
@@ -62,6 +54,12 @@ namespace ChangeDatabase
             catch (FormatException)
             {
                 // month or year was not converted to int. It will simply be ignored.
+                // RemoveFile(FileInformation);
+            }
+            catch (ArgumentException)
+            {
+                // Date was invalid
+                // RemoveFile(FileInformation);
             }
         }
 

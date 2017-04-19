@@ -5,10 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-// Remove article: Fjern inde i trashbin
-// Fjerne = navn
-// Tilføj = list
-
 namespace ChangeDatabase
 {
     class ChangeDatabase
@@ -17,47 +13,55 @@ namespace ChangeDatabase
         private List<string> Article = new List<string>();
 
         // File fields. Disse er måske arvet.
-        private string FileName = "test.txt";
-        private string SourcePath = @"C:\Users\Jesper\Dropbox\AAU\P2\Program\Folder_test";
-        private string TargetPath = @"C:\Users\Jesper\Dropbox\AAU\P2\Program\Folder_test\folder";
-
+        private string FileName;
+        private string Source = "Folder_test";
+        private string Target = "Folder_test\\folder";
+        private string SourcePath;
+        private string TargetPath;
         #endregion
 
         // Input from User Input or Fake News result. - BRUGES TIL ADD
         public ChangeDatabase(List<string> Article) //Input her vil være den tekst som skal rettes. Hvad indlæses den som? Tror List.
         {
             this.Article = Article;
+            PathMaker();
         }
         
-        // HER SKAL INDLÆSES STRING - BRUGES TIL REMOVE
-        public ChangeDatabase()
-        {// this is a test
+        public ChangeDatabase(string FileName)
+        {
+            this.FileName = FileName;
+            PathMaker();
+        }
+
+        private void PathMaker()
+        { 
+            string Path = Directory.GetCurrentDirectory();
+            // removes \ChangeDatabase\bin\Debug from directory.
+            Path = Path.Remove(Path.Length - 25); //DETTE SKAL OPTIMERES OG IKKE EKSPLICIT. ****
+            SourcePath = System.IO.Path.Combine(Path, Source);
+            TargetPath = System.IO.Path.Combine(Path, Target);
         }
 
         public void RemoveArticle()
         {
-            /*
-             For bare at fjerne filen:
-             System.IO.File.Delete(sourceFile);
-             */
-
-            // I stedet for at fjerne artiklen helt, kan det i stedet være en ide at rykke den over i en anden mappe.
-            // https://msdn.microsoft.com/en-us/library/cc148994.aspx
-
             // Creating source and destionation path for file.
-            string sourceFile = System.IO.Path.Combine(SourcePath, FileName);
-            string destFile = System.IO.Path.Combine(TargetPath, FileName);
+            string sourceFile = Path.Combine(SourcePath, FileName);
+            string destFile = Path.Combine(TargetPath, FileName);
 
             // If folder is not found, create one.
             if (!Directory.Exists(TargetPath))
             {
                 Directory.CreateDirectory(TargetPath);
             }
-            // Copy file to chosen file. Overwrite if file is already there
-            File.Copy(sourceFile, destFile, true);
 
+            if (Directory.Exists(sourceFile))
+            {
+                // Copy file to chosen file. Overwrite if file is already there
+                File.Copy(sourceFile, destFile, true);
+            }
+            
             // If file is in both source and dest. Delete file in source.
-            if (File.Exists(destFile) && System.IO.File.Exists(sourceFile))
+            if (File.Exists(destFile) && File.Exists(sourceFile))
                 File.Delete(sourceFile);
 
             Console.WriteLine("done");
@@ -66,14 +70,9 @@ namespace ChangeDatabase
 
         public void AddArticle()
         {
-            //Den valgte artikel ligger som field.
-            //Her programmet kun tilføje artiklen til databasen. 
-            // for at lave en txtfil, brug File.WriteAllLines
-            // https://msdn.microsoft.com/da-dk/library/8bh11f1k.aspx
+            #region writelines
 
-            // Tilføjer dato til filnavnet på nyhedsartiklen. 
-            // Dette er en ikke effektiv prototype, som skal laves om til windows form. 
-
+            // DETTE SKAL GØRES I WINFORM, MEN LIGGE PÅ NUVÆRENDE TIDSPUNKT SOM HARDCODE
             Console.WriteLine("Please enter the date, the newsarticle was written in format dd_mm_yy_Name");
             Console.WriteLine("First enter day of the month with _, then press enter");
             string dayOfArticle = Console.ReadLine();
@@ -82,19 +81,24 @@ namespace ChangeDatabase
             Console.WriteLine("Enter the year");
             string yearOfArticle = Console.ReadLine();
             string dateOfArticle = dayOfArticle + monthOfArticle + yearOfArticle;
-            Console.WriteLine("The article was written in:");
-            Console.WriteLine(dateOfArticle);
-
+            Console.WriteLine("Enter article name");
+            string articleName = Console.ReadLine();
+            string localFile = dateOfArticle + articleName + ".txt";
+            #endregion 
+            // localFile = hele navnet på filen.
             
-            
-
             // Opretter path for fil og filens tekst.
-            string destFile = System.IO.Path.Combine(SourcePath, FileName);
-            string text = "YabbaDabbaDUUU";
-
+            string destFile = Path.Combine(SourcePath, localFile);
+            
             // Sikre sig at der ikke bliver overwrited.
             if (!File.Exists(destFile))
-                File.WriteAllText(destFile, text);
+            {
+                foreach (string word in Article)
+                {
+                    FileName += word + " ";
+                }
+                File.WriteAllText(destFile, FileName);
+            }
             else
                 Console.WriteLine("Article already in database");
 

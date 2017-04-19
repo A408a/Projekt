@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LoadTextLibrary">
+      <HintPath>..\..\..\..\..\Dropbox\AAU\P2\Program\Class libraries\LoadTextLibrary\LoadTextLibrary\obj\Debug\LoadTextLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
