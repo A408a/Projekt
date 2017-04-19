@@ -11,8 +11,26 @@ namespace ChangeDatabase
         static void Main(string[] args)
         {
             ChangeDatabase Run = new ChangeDatabase();
-            Run.AddArticle();
-            Run.RemoveArticle();
+
+            try
+            {
+                Run.AddArticle();
+
+            }
+
+            catch(ArgumentException e)
+            {
+                Console.WriteLine("An exception happened: " + e);
+                // Console.WriteLine("Please enter the day in the correct format");
+                Console.ReadLine();
+                Run.AddArticle();
+            }
+
+           
+
+
+            
+            //Run.RemoveArticle();
         }
     }
 }
