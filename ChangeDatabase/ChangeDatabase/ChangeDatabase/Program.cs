@@ -15,7 +15,7 @@ namespace ChangeDatabase
             if (start == 1)
             {
                 AutomaticRemoveFromDatabase Run = new AutomaticRemoveFromDatabase();
-                Run.FindOutdatedFile();
+                Run.FindOutdateFolder();
             }
             else
             {
