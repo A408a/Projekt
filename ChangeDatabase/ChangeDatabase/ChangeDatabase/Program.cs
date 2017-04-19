@@ -10,9 +10,19 @@ namespace ChangeDatabase
     {
         static void Main(string[] args)
         {
-            ChangeDatabase Run = new ChangeDatabase();
-            Run.AddArticle();
-            Run.RemoveArticle();
+
+            int start = 1;
+            if (start == 1)
+            {
+                AutomaticRemoveFromDatabase Run = new AutomaticRemoveFromDatabase();
+                Run.FindOutdatedFile();
+            }
+            else
+            {
+                ChangeDatabase Run = new ChangeDatabase();
+                Run.AddArticle();
+                Run.RemoveArticle();
+            }
         }
     }
 }
