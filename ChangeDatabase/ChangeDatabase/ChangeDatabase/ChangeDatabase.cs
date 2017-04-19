@@ -73,9 +73,13 @@ namespace ChangeDatabase
 
             // Tilføjer dato til filnavnet på nyhedsartiklen. 
             // Dette er en ikke effektiv prototype, som skal laves om til windows form. 
+
             Console.WriteLine("Please enter the date, the newsarticle was written in format dd_mm_yy_Name");
             Console.WriteLine("First enter day of the month with _, then press enter");
             string dayOfArticle = Console.ReadLine();
+            if (dayOfArticle.Length != 3)
+                throw new ArgumentException("Please enter the day in the right format");
+
             Console.WriteLine("Then enter month with _, press enter afterwarts");
             string monthOfArticle = Console.ReadLine();
             Console.WriteLine("Enter the year");
