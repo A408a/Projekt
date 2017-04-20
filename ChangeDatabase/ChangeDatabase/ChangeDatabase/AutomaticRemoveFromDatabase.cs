@@ -51,22 +51,49 @@ namespace ChangeDatabase
                 Console.ReadLine();
             }
 
+            // month or year was not converted to int.
             catch (FormatException)
             {
-                // month or year was not converted to int. It will simply be ignored.
-                // RemoveFile(FileInformation);
+                HandleException(FileInformation);
             }
+
+            // Date was invalid
             catch (ArgumentException)
             {
-                // Date was invalid
-                // RemoveFile(FileInformation);
+                HandleException(FileInformation);
             }
         }
 
         private void RemoveFile(FileInfo FileInformation)
         {
-            // SKAL VI HAVE EN "FOUND X OUTDATED ARTICLE. SHOULD THEY BE REMOVED? "YES" "NO?"
             FileInformation.Delete();
+        }
+
+        private void HandleException(FileInfo FileInformation)
+        {
+            
+            // DETTE SKAL LAVES I WINFORM
+            Console.WriteLine($"Found invalid article. \n{FileInformation.FullName}");
+            Console.WriteLine("Remove the article(0), or change the date to today?(1)");
+            string UserChoice = Console.ReadLine();
+
+
+            if (UserChoice == "0")
+                FileInformation.Delete();
+            else
+            {
+                // DETTE SKAL LAVES I WINFORM
+                Console.WriteLine("Enter title on article");
+                string Title = Console.ReadLine() + ".txt";
+                string CurrentDate = DateTime.Now.Day.ToString() + "_" 
+                                   + DateTime.Now.Month.ToString() + "_"
+                                   + DateTime.Now.Year.ToString() + "_";
+                string TargetPath = FileInformation.DirectoryName;
+
+                Title = "\\" + CurrentDate + Title;
+                TargetPath = Path.Combine(TargetPath + Title);
+                File.Move(FileInformation.FullName, TargetPath);
+            }
         }
     }
 }
