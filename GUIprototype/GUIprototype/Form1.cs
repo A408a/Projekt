@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JaccardSimilarityLibrary;
 
 namespace GUIprototype
 {
@@ -20,6 +21,14 @@ namespace GUIprototype
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkText_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CheckText CheckText = new CheckText();
+            CheckText.Show();
+            
         }
     }
 }
