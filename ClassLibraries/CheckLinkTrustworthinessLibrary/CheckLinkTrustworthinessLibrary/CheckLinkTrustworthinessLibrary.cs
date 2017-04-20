@@ -9,7 +9,7 @@ using LoadTextLibrary;
 
 //- HUSK AT ÆNDRE FRA CONSOLE.READLINE OG CONSOLE.WRITELINE TIL WINFORM TING NÅR DET SKAL VIDERE
 
-namespace CheckLinkTrustworthiness
+namespace CheckLinkTrustworthinessLibrary
 {
     public class CheckLinkTrustworthiness
     {
@@ -22,34 +22,32 @@ namespace CheckLinkTrustworthiness
         {
             this.ListOfFakeNewsWebsites = listOfFakeNewsWebsites;
             this.LinkFromPrompt = linkFromPrompt;
-            //PromptLinkToCheck();
-            CheckLink();
-            PrintResult();
+
+            IsLinkNull();
         }
 
-        //private void PromptLinkToCheck()
-        //{
-        //    //Prompts user for a link to check.
-        //    Console.WriteLine("Input link: ");
-        //    LinkFromPrompt = Console.ReadLine();
-
-        //}
-
-        private void CheckLink()
+        private void IsLinkNull()
         {
-            LengthOfList = ListOfFakeNewsWebsites.Count();
             //Checks if link is null.
             if (LinkFromPrompt == null)
                 throw new ArgumentNullException("Input was null.");
             else
             {
-                //Checks if the link the user has put in contains a fake domain.
-                for (int i = 0; i < LengthOfList && DoesLinkToFakeNews != true; i++)
-                {
-                    if (LinkFromPrompt.Contains(ListOfFakeNewsWebsites[i]))
-                        DoesLinkToFakeNews = true;
-                }
+                CheckLink();
+                PrintResult();
             }
+        }
+
+        private void CheckLink()
+        {
+            LengthOfList = ListOfFakeNewsWebsites.Count();
+            //Checks if the link the user has put in contains a fake domain.
+            for (int i = 0; i < LengthOfList && DoesLinkToFakeNews != true; i++)
+            {
+                if (LinkFromPrompt.Contains(ListOfFakeNewsWebsites[i]))
+                    DoesLinkToFakeNews = true;
+            }
+
         }
 
         private void PrintResult()

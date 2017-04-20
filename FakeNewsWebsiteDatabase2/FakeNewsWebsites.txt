@@ -1,8 +1,8 @@
-ABCnews.com.co
-Bloomberg.ma
+abcnews.com.co
+bloomberg.ma
 cnn-trending.com
 bizstandardnews.com
-DrudgeReport.com.co
+drudgereport.com.co
 usatoday.com.co
 washingtonpost.com.co
 dailycurrant.com
@@ -54,7 +54,7 @@ dailybuzzlive.com
 counterpsyops.com
 coasttocoastam.com
 chronicle.su
-TheRunDownLive.com
+therundownlive.com
 thespoof.com
 thelapine.ca
 rockcitytimes.com
@@ -62,11 +62,11 @@ duhprogressive.com
 naturalnews.com
 infowars.com
 ageofautism.com
-Now8News.com
+now8news.com
 liberty-courier.com
 viraldevil.com
-www.redpeople.us
-www.conservativeinfocorner.us
+redpeople.us
+conservativeinfocorner.us
 bizstandardnews.com
 cnn.com.de
 viralcords.com
