@@ -9,7 +9,7 @@ using LoadTextLibrary;
 
 //- HUSK AT ÆNDRE FRA CONSOLE.READLINE OG CONSOLE.WRITELINE TIL WINFORM TING NÅR DET SKAL VIDERE
 
-namespace CheckLinkTrustworthiness
+namespace CheckLinkTrustworthinessLibrary
 {
     public class CheckLinkTrustworthiness
     {
