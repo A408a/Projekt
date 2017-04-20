@@ -11,8 +11,10 @@ namespace CheckLinkTrustworthiness
     {
         static void Main(string[] args)
         {
-            LoadStringToList ListOfFakeNewsWebsites = new LoadStringToList(@"D:\AAU\2.semester\Projekt\Program\FakeNewsWebsiteDatabase\FakeNewsWebsites.txt");
-            CheckLinkTrustworthiness CheckLink = new CheckLinkTrustworthiness(ListOfFakeNewsWebsites.Lines);
+            LoadStringToList ListOfFakeNewsWebsites = new LoadStringToList(@"D:\P2GithubMappe\Projekt\FakeNewsWebsiteDatabase2\FakeNewsWebsites.txt");
+            Console.WriteLine("Wat: ");
+            string LinkFromUser = Console.ReadLine();
+            CheckLinkTrustworthiness CheckLink = new CheckLinkTrustworthiness(ListOfFakeNewsWebsites.Lines, LinkFromUser);
             Console.ReadLine();
         }
     }
