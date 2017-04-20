@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using HtmlAgilityPack;
 
-namespace WebArticleURLToText
+namespace WebArticleURLToTextLibrary
 {
     class NewsPage
     {
@@ -19,7 +19,7 @@ namespace WebArticleURLToText
 
         public NewsPage(string website)     //   
         {
-            
+
             // Webpage name, ID(Potential) and div[]
             websites.Add("www.bbc.com", Tuple.Create("page", "//div[2]/div[2]/div/div[1]/div[1]"));
             websites.Add("www.theguardian.com", Tuple.Create("article", "//div[4]/div/div[1]/div[5]"));
@@ -34,7 +34,7 @@ namespace WebArticleURLToText
             //Fake
             websites.Add("www.breitbart.com", Tuple.Create("post-6443977", "//div"));
             websites.Add("www.cnn.com.de", Tuple.Create("post-705", "//div[3]"));
-         
+
             doc = GetWebsite(website);      // Initialization
             GetArticleHead();
             GetArticleBody();

@@ -11,15 +11,14 @@ namespace WebArticleURLToText
         static void Main(string[] args)
         {
             Console.Write(" Insert URL Address >> ");
-
-           
             string Webaddress = Console.ReadLine();
             Console.Clear();
-
-            Console.ForegroundColor = ConsoleColor.White;               // Color on article letters.
             NewsPage page = new NewsPage(Webaddress);                   // New Instance.
-            Console.WriteLine(page.GetArticleHead());
-            Console.WriteLine(page.GetArticleBody());                 // Print Text content
+            Console.WriteLine(page.Headline);
+            foreach (string text in page.BodyText)
+            {
+                Console.WriteLine(text);                 // Print Text content
+            }
 
             Console.ReadKey();
         }
