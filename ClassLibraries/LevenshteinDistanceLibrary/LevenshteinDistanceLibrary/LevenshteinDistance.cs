@@ -18,7 +18,6 @@ namespace LevenshteinDistanceLibrary
         private int _linesInTextB;
         private double value = 0;
         private double levenshteinDistanceDouble = 0;
-//        private int Total = 0;
 
         public LevenshteinDistance(List<string> a, List<string> b, int CharsInTextA,
                                    int CharsInTextB, int LinesInTextA, int LinesInTextB)//Constructor, som sætter streng a lig med Basis og b lig med Target
@@ -30,7 +29,8 @@ namespace LevenshteinDistanceLibrary
             this._linesInTextA = LinesInTextA;
             this._linesInTextB = LinesInTextB;
 
-            this.CompareTexts();
+            CompareTexts();
+            Print();
         }
 
         public void CompareTexts()
@@ -51,8 +51,6 @@ namespace LevenshteinDistanceLibrary
                     }
                 }
                 levenshteinDistanceDouble += ListLevDis.Min(); //Den mindste LD for hver linje i tekst A i forhold til tekst B
-                //Total += ListLevDis.Capacity;
-                //Total += ListLevDis.Capacity;//compoundassignes til levenshteinDistanceDouble
                 ListLevDis.Clear();  //Listen bliver clearet
             }
             double LevDisPct = ((1 - (levenshteinDistanceDouble / _charsInTextA)) * 100); //Finder LD i procent
@@ -95,7 +93,6 @@ namespace LevenshteinDistanceLibrary
                 {
 
                     distances[0, j] = j;        // Fyld søjler med 0, 1, 2.. n
-                  //  ++Total;
                     counter++;
                     int cost = Target[j - 1] == Basis[i - 1] ? 0 : 1; //Hvis T og B er ens tillægges cost værdien 0 ellers 1
                     distances[i, j] = Math.Min
@@ -109,11 +106,8 @@ namespace LevenshteinDistanceLibrary
             return distances[lengthB, lengthT]; //Returnerer vores levenshtein distance fra det sidste element i matricen
         }
 
-
-
         public void Print() //Der printes
         {
-//            Console.WriteLine(Total);
             Console.WriteLine($"Levenshtein similarity: {value}%");
         }
     }
