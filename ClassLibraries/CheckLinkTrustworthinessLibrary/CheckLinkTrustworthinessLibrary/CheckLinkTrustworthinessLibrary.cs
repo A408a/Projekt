@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LoadTextLibrary;
-//- HUSK AT LAVE VIDERE KALD TIL NÆSTE KLASSE/METODE HVIS BRUGER VIL FORTSÆTTE EFTER DE HAR FÅET AT VIDE
-//  AT DER LINKES TIL FAKE NEWS
+using CheckLinkTrustworthinessLibrary.Properties;
+using System.IO;
 
 //- HUSK AT ÆNDRE FRA CONSOLE.READLINE OG CONSOLE.WRITELINE TIL WINFORM TING NÅR DET SKAL VIDERE
 
@@ -13,14 +12,13 @@ namespace CheckLinkTrustworthinessLibrary
 {
     public class CheckLinkTrustworthiness
     {
-        private List<string> ListOfFakeNewsWebsites { get; set; }
         private string LinkFromPrompt;
         public bool DoesLinkToFakeNews = false;
         private int LengthOfList;
-
-        public CheckLinkTrustworthiness(List<string> listOfFakeNewsWebsites, string linkFromPrompt)
+        private List<string> ListOfFakeNewsWebsites = new List<string>();
+        
+        public CheckLinkTrustworthiness(string linkFromPrompt)
         {
-            this.ListOfFakeNewsWebsites = listOfFakeNewsWebsites;
             this.LinkFromPrompt = linkFromPrompt;
 
             IsLinkNull();
@@ -40,14 +38,18 @@ namespace CheckLinkTrustworthinessLibrary
 
         private void CheckLink()
         {
-            LengthOfList = ListOfFakeNewsWebsites.Count();
             //Checks if the link the user has put in contains a fake domain.
-            for (int i = 0; i < LengthOfList && DoesLinkToFakeNews != true; i++)
+
+            ListOfFakeNewsWebsites = Resources.FakeNewsWebsites.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList();
+
+            int NumberOfFakeNewsWebsites = ListOfFakeNewsWebsites.Count();
+            Console.WriteLine(NumberOfFakeNewsWebsites);
+
+            for (int i = 0; i < NumberOfFakeNewsWebsites && DoesLinkToFakeNews != true; i++)
             {
                 if (LinkFromPrompt.Contains(ListOfFakeNewsWebsites[i]))
                     DoesLinkToFakeNews = true;
             }
-
         }
 
         private void PrintResult()
