@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CheckLinkTrustworthinessLibrary;
 
 namespace GUIprototype
 {
@@ -17,11 +18,28 @@ namespace GUIprototype
             InitializeComponent();
         }
 
-        private void ExtractText_Click(object sender, EventArgs e)
+        private void URLbox_TextChanged(object sender, EventArgs e)
         {
+
 
         }
 
-        
+        private void CheckLink_Click(object sender, EventArgs e)
+        {
+            //string url = URLbox.Text;
+
+            CheckLinkTrustworthiness link = new CheckLinkTrustworthiness(URLbox.Text);
+
+            if (link.DoesLinkToFakeNews)
+            {
+                this.Hide();
+                CheckLinkResult CheckLinkResult = new CheckLinkResult();
+                CheckLinkResult.Show();
+            }
+
+
+
+
+        }
     }
 }

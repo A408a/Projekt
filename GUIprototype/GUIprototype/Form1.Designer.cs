@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.checkText = new System.Windows.Forms.Button();
+            this.EditDatabase = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -48,15 +49,25 @@
             this.checkText.Name = "checkText";
             this.checkText.Size = new System.Drawing.Size(75, 23);
             this.checkText.TabIndex = 1;
-            this.checkText.Text = "check text";
+            this.checkText.Text = "Check text";
             this.checkText.UseVisualStyleBackColor = true;
             this.checkText.Click += new System.EventHandler(this.checkText_Click);
+            // 
+            // EditDatabase
+            // 
+            this.EditDatabase.Location = new System.Drawing.Point(23, 170);
+            this.EditDatabase.Name = "EditDatabase";
+            this.EditDatabase.Size = new System.Drawing.Size(83, 23);
+            this.EditDatabase.TabIndex = 2;
+            this.EditDatabase.Text = "Edit database";
+            this.EditDatabase.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.EditDatabase);
             this.Controls.Add(this.checkText);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -71,6 +82,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button checkText;
+        private System.Windows.Forms.Button EditDatabase;
     }
 }
 

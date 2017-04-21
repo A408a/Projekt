@@ -32,7 +32,7 @@ namespace CheckLinkTrustworthinessLibrary
             else
             {
                 CheckLink();
-                PrintResult();
+                //PrintResult();
             }
         }
 
