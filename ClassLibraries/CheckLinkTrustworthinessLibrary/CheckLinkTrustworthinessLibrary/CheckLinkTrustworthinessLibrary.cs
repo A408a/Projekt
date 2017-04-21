@@ -43,7 +43,6 @@ namespace CheckLinkTrustworthinessLibrary
             ListOfFakeNewsWebsites = Resources.FakeNewsWebsites.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList();
 
             int NumberOfFakeNewsWebsites = ListOfFakeNewsWebsites.Count();
-            Console.WriteLine(NumberOfFakeNewsWebsites);
 
             for (int i = 0; i < NumberOfFakeNewsWebsites && DoesLinkToFakeNews != true; i++)
             {
