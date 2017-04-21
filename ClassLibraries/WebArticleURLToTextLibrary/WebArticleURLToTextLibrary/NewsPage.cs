@@ -81,7 +81,6 @@ namespace WebArticleURLToTextLibrary
 
                 return doc.GetElementbyId(vals.Item1).SelectNodes(vals.Item2).Last();    // Gets ID and div.
             }
-
         }
     }
 }
