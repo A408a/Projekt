@@ -23,15 +23,15 @@ namespace WebArticleURLToText
             // Webpage name, ID(Potential) and div[]
             websites.Add("www.bbc.com", Tuple.Create("page", "//div[2]/div[2]/div/div[1]/div[1]"));
             websites.Add("www.theguardian.com", Tuple.Create("article", "//div[4]/div/div[1]/div[5]"));
-            websites.Add("news.sky.com", Tuple.Create("", "//html/body/div[1]/div[2]/div[1]/div[3]/div"));
+            websites.Add("news.sky.com", Tuple.Create("", "//html/body/div[1]/div[2]"));
             websites.Add("www.washingtonpost.com", Tuple.Create("article-body", "//article"));
             websites.Add("www.huffingtonpost.com", Tuple.Create("us_58f66fece4b0de5bac41a5cd", "//div/div[1]/div[4]"));
             websites.Add("www.cbsnews.com", Tuple.Create("article-entry", "//div[2]"));
-            websites.Add("tytnetwork.com", Tuple.Create("post-469222", "//div[2]/div"));
-            websites.Add("abcnews.com.co", Tuple.Create("", "//html/body/div"));
+            //websites.Add("tytnetwork.com", Tuple.Create("post-469222", "//div[2]/div"));
             //websites.Add("abcnews.go.com", Tuple.Create("article-feed", "//article[1]/div"));
             //websites.Add("edition.cnn.com", Tuple.Create("body-text", "//div/div[1]"));
             //Fake
+            websites.Add("abcnews.com.co", Tuple.Create("", "//html/body/div"));
             websites.Add("www.breitbart.com", Tuple.Create("post-6443977", "//div"));
             websites.Add("www.cnn.com.de", Tuple.Create("post-705", "//div[3]"));
          
