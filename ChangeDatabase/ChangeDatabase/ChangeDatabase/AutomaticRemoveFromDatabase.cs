@@ -7,20 +7,21 @@ using System.IO;
 
 namespace ChangeDatabase
 {
-    class AutomaticRemoveFromDatabase
+    public class AutomaticRemoveFromDatabase
     {
         
         public void FindOutdateFolder()
         {
-            string DirectoryName = "Testfolder";
-            string Path = Directory.GetCurrentDirectory();
-            
-            // removes \ChangeDatabase\bin\Debug from directory.
-            Path = Path.Remove(Path.Length - 25); //DETTE SKAL OPTIMERES OG IKKE EKSPLICIT. ****
-            Path = System.IO.Path.Combine(Path, DirectoryName);
-            DirectoryInfo Dir = new DirectoryInfo(Path);
+            string DirectoryName = "TestFolder";
+            string path = Directory.GetCurrentDirectory();
 
-            foreach (FileInfo file in Dir.GetFiles())
+            //Path goes 3 folders up.
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+
+            path = Path.Combine(path, DirectoryName);
+            DirectoryInfo Dir = new DirectoryInfo(path);
+
+            foreach (FileInfo file in Dir.GetFiles()) 
                 FindOutdatedFile(file.ToString(), file);
         }
 

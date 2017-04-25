@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ChangeDatabase
 {
-    class ChangeDatabase
+    public class ChangeDatabase
     {
         #region Members
         private List<string> Article = new List<string>();
@@ -26,7 +26,7 @@ namespace ChangeDatabase
             this.Article = Article;
             PathMaker();
         }
-        
+
         public ChangeDatabase(string FileName)
         {
             this.FileName = FileName;
@@ -34,12 +34,12 @@ namespace ChangeDatabase
         }
 
         private void PathMaker()
-        { 
-            string Path = Directory.GetCurrentDirectory();
-            // removes \ChangeDatabase\bin\Debug from directory.
-            Path = Path.Remove(Path.Length - 25); //DETTE SKAL OPTIMERES OG IKKE EKSPLICIT. ****
-            SourcePath = System.IO.Path.Combine(Path, Source);
-            TargetPath = System.IO.Path.Combine(Path, Target);
+        {
+            string path = Directory.GetCurrentDirectory();
+            //Path goes 3 folders up.
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+            SourcePath = Path.Combine(path, Source);
+            TargetPath = Path.Combine(path, Target);
         }
 
         public void RemoveArticle()
@@ -59,7 +59,7 @@ namespace ChangeDatabase
                 // Copy file to chosen file. Overwrite if file is already there
                 File.Copy(sourceFile, destFile, true);
             }
-            
+
             // If file is in both source and dest. Delete file in source.
             if (File.Exists(destFile) && File.Exists(sourceFile))
                 File.Delete(sourceFile);
@@ -68,28 +68,23 @@ namespace ChangeDatabase
             Console.ReadLine();
         }
 
+        private void FindTag()
+        {
+            // Her skal programmet finde, hvilken tag som den valgte artikel skal ligge inde under.
+            // Det kunne altså være en ide, at det kom som noget af det sidste.
+            // Om det bliver indsat i falsk eller sandt, er vel et input.
+        }
+
         public void AddArticle()
         {
-            #region writelines
-
-            // DETTE SKAL GØRES I WINFORM, MEN LIGGE PÅ NUVÆRENDE TIDSPUNKT SOM HARDCODE
-            Console.WriteLine("Please enter the date, the newsarticle was written in format dd_mm_yy_Name");
-            Console.WriteLine("First enter day of the month with _, then press enter");
-            string dayOfArticle = Console.ReadLine();
-            Console.WriteLine("Then enter month with _, press enter afterwarts");
-            string monthOfArticle = Console.ReadLine();
-            Console.WriteLine("Enter the year");
-            string yearOfArticle = Console.ReadLine();
-            string dateOfArticle = dayOfArticle + monthOfArticle + yearOfArticle;
-            Console.WriteLine("Enter article name");
-            string articleName = Console.ReadLine();
-            string localFile = dateOfArticle + articleName + ".txt";
-            #endregion 
+            string file = "";
             // localFile = hele navnet på filen.
-            
+            CreateFileName userInput = new CreateFileName();
+            string localFile = userInput.UserCreateFileName(file);
+
             // Opretter path for fil og filens tekst.
             string destFile = Path.Combine(SourcePath, localFile);
-            
+
             // Sikre sig at der ikke bliver overwrited.
             if (!File.Exists(destFile))
             {
@@ -103,12 +98,31 @@ namespace ChangeDatabase
                 Console.WriteLine("Article already in database");
 
             // Kontrol af, at alt virkede.
-            if(File.Exists(destFile))
+            if (File.Exists(destFile))
                 Console.WriteLine("Done");
             else
                 Console.WriteLine("Fail");
             Console.ReadLine();
         }
 
+    }
+    public class CreateFileName
+    {
+        public virtual string UserCreateFileName(string file)
+        {
+            // DETTE SKAL GØRES I WINFORM, MEN LIGGE PÅ NUVÆRENDE TIDSPUNKT SOM HARDCODE
+            Console.WriteLine("Please enter the date, the newsarticle was written in format dd_mm_yy_Name");
+            Console.WriteLine("First enter day of the month with _, then press enter");
+            string dayOfArticle = Console.ReadLine();
+            Console.WriteLine("Then enter month with _, press enter afterwarts");
+            string monthOfArticle = Console.ReadLine();
+            Console.WriteLine("Enter the year");
+            string yearOfArticle = Console.ReadLine();
+            string dateOfArticle = dayOfArticle + monthOfArticle + yearOfArticle;
+            Console.WriteLine("Enter article name");
+            string articleName = Console.ReadLine();
+            string localFile = dateOfArticle + articleName + ".txt";
+            return localFile;
+        }
     }
 }
