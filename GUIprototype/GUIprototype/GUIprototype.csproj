@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JaccardLibrary">
+      <HintPath>..\..\..\..\..\Dropbox\P1 Projekt\P2\Program\Class libraries\JaccardLibrary\JaccardLibrary\bin\Debug\JaccardLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckLinkResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckLinkResult.Designer.cs">
+      <DependentUpon>CheckLinkResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckText.Designer.cs">
+      <DependentUpon>CheckText.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +69,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CheckLinkResult.resx">
+      <DependentUpon>CheckLinkResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckText.resx">
+      <DependentUpon>CheckText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +99,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ClassLibraries\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary.csproj">
+      <Project>{88172e03-757b-428e-9e25-6abcc18a9090}</Project>
+      <Name>CheckLinkTrustworthinessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebArticleURLToText\WebArticleURLToText\WebArticleURLToText.csproj">
+      <Project>{3d866d74-7bc2-445c-9382-5fbac0c87f9b}</Project>
+      <Name>WebArticleURLToText</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
