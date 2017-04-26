@@ -31,6 +31,7 @@
             this.Messagelabel = new System.Windows.Forms.Label();
             this.continueButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.previousForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Messagelabel
@@ -46,7 +47,7 @@
             // 
             // continueButton
             // 
-            this.continueButton.Location = new System.Drawing.Point(103, 138);
+            this.continueButton.Location = new System.Drawing.Point(172, 192);
             this.continueButton.Name = "continueButton";
             this.continueButton.Size = new System.Drawing.Size(75, 23);
             this.continueButton.TabIndex = 1;
@@ -62,11 +63,22 @@
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // previousForm
+            // 
+            this.previousForm.Location = new System.Drawing.Point(24, 191);
+            this.previousForm.Name = "previousForm";
+            this.previousForm.Size = new System.Drawing.Size(75, 23);
+            this.previousForm.TabIndex = 3;
+            this.previousForm.Text = "Back";
+            this.previousForm.UseVisualStyleBackColor = true;
+            this.previousForm.Click += new System.EventHandler(this.previousForm_Click);
+            // 
             // CheckLinkResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.previousForm);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.continueButton);
             this.Controls.Add(this.Messagelabel);
@@ -84,5 +96,6 @@
         private System.Windows.Forms.Label Messagelabel;
         private System.Windows.Forms.Button continueButton;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button previousForm;
     }
 }

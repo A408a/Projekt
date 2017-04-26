@@ -40,6 +40,14 @@ namespace GUIprototype
                 
             }
 
+            else
+            {
+                this.Hide();
+                TextSimilarityForm TextSimilarity = new TextSimilarityForm(this);
+                TextSimilarity.Show();
+
+            }
+
         }
 
         
