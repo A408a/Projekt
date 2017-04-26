@@ -18,6 +18,16 @@ namespace GUIprototype
             InitializeComponent();
         }
 
+        private CheckLinkResult otherform;
+        private void GetOtherForm()
+        {
+            otherform.url = URLbox.Text;
+        }
+
+       
+           
+
+
         private void URLbox_TextChanged(object sender, EventArgs e)
         {
 
@@ -30,16 +40,15 @@ namespace GUIprototype
 
             CheckLinkTrustworthiness link = new CheckLinkTrustworthiness(URLbox.Text);
 
-            if (link.DoesLinkToFakeNews)
-            {
+            //if (link.DoesLinkToFakeNews)
+            //{
                 this.Hide();
                 CheckLinkResult CheckLinkResult = new CheckLinkResult();
                 CheckLinkResult.Show();
-            }
-
-
-
+            //}
 
         }
+
+        
     }
 }
