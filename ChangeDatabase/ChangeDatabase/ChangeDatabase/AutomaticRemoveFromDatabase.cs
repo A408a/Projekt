@@ -10,7 +10,7 @@ namespace ChangeDatabase
     public class AutomaticRemoveFromDatabase
     {
         
-        public void FindOutdateFolder()
+        public void FindOutdatedFolder()
         {
             string DirectoryName = "TestFolder";
             string path = Directory.GetCurrentDirectory();
@@ -21,7 +21,21 @@ namespace ChangeDatabase
             path = Path.Combine(path, DirectoryName);
             DirectoryInfo Dir = new DirectoryInfo(path);
 
-            foreach (FileInfo file in Dir.GetFiles()) 
+            foreach (DirectoryInfo Tag in Dir.GetDirectories())
+            {
+                BrowseTags(Tag);
+            }
+        }
+
+        private void BrowseTags(DirectoryInfo Dir)
+        {
+            DirectoryInfo DirTrue = new DirectoryInfo(Path.Combine(Dir.FullName, "True"));
+            DirectoryInfo DirFalse = new DirectoryInfo(Path.Combine(Dir.FullName, "False"));
+
+            foreach (FileInfo file in DirTrue.GetFiles())
+                FindOutdatedFile(file.ToString(), file);
+
+            foreach (FileInfo file in DirFalse.GetFiles())
                 FindOutdatedFile(file.ToString(), file);
         }
 
@@ -39,9 +53,7 @@ namespace ChangeDatabase
                 if (year == DateTime.Now.Year)
                 {
                     // If article is less than 3 months old
-                    if (month > DateTime.Now.Month - 3)
-                        Console.WriteLine(File);
-                    else
+                    if (month < DateTime.Now.Month - 3)
                         RemoveFile(FileInformation);
                 }
                 else
@@ -49,7 +61,7 @@ namespace ChangeDatabase
                     RemoveFile(FileInformation);
                 }
 
-                Console.ReadLine();
+                //Console.ReadLine();
             }
 
             // month or year was not converted to int.
@@ -86,9 +98,7 @@ namespace ChangeDatabase
                 // DETTE SKAL LAVES I WINFORM
                 Console.WriteLine("Enter title on article");
                 string Title = Console.ReadLine() + ".txt";
-                string CurrentDate = DateTime.Now.Day.ToString() + "_" 
-                                   + DateTime.Now.Month.ToString() + "_"
-                                   + DateTime.Now.Year.ToString() + "_";
+                string CurrentDate = DateTime.Now.ToString("dd_MM_yyyy_");
                 string TargetPath = FileInformation.DirectoryName;
 
                 Title = "\\" + CurrentDate + Title;
