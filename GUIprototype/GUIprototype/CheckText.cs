@@ -18,9 +18,9 @@ namespace GUIprototype
             InitializeComponent();
         }
 
-       public string urlForm {
-            get { return URLbox.Text; }
-        }
+       //public string urlForm {
+       //     get { return URLbox.Text; }
+       // }
 
         private void URLbox_TextChanged(object sender, EventArgs e)
         {
@@ -37,7 +37,7 @@ namespace GUIprototype
             if (link.DoesLinkToFakeNews)
             {
                 this.Hide();
-                CheckLinkResult CheckLinkResult = new CheckLinkResult();
+                CheckLinkResult CheckLinkResult = new CheckLinkResult(this);
                 CheckLinkResult.Show();
                 
             }
