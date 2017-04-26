@@ -18,6 +18,8 @@ namespace GUIprototype
             InitializeComponent();
         }
 
+        public CheckText CheckText = new CheckText();
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -26,7 +28,7 @@ namespace GUIprototype
         private void checkText_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CheckText CheckText = new CheckText();
+            
             CheckText.Show();
             
         }

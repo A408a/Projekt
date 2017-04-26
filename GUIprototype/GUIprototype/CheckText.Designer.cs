@@ -80,6 +80,6 @@
 
         private System.Windows.Forms.Button CheckLink;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox URLbox;
+        public System.Windows.Forms.TextBox URLbox;
     }
 }

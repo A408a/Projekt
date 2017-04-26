@@ -29,18 +29,20 @@ namespace GUIprototype
 
         }
 
+        
+
         private void continueButton_Click(object sender, EventArgs e)
         {
 
+
+            // NewsPage article = new NewsPage(text.Url);
             
-           // NewsPage article = new NewsPage(text.Url);
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            label1.Text = url;
-            
+
         }
     }
 }
