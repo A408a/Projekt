@@ -13,11 +13,13 @@ namespace GUIprototype
 {
     public partial class CheckLinkResult : Form
     {
+        // Declaring an instance of the checkText form. 
         private CheckText form1;
 
         public CheckLinkResult(CheckText form1)
         {
             InitializeComponent();
+            // Setting the instance of checkText equel to the parameter that is passed in the constructer. 
             this.form1 = form1;
         }
 

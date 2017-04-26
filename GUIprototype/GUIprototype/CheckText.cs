@@ -18,9 +18,6 @@ namespace GUIprototype
             InitializeComponent();
         }
 
-       //public string urlForm {
-       //     get { return URLbox.Text; }
-       // }
 
         private void URLbox_TextChanged(object sender, EventArgs e)
         {
@@ -37,6 +34,7 @@ namespace GUIprototype
             if (link.DoesLinkToFakeNews)
             {
                 this.Hide();
+                // Create instance of form CheckLinkResult and pass the current CheckText as a parameter to the constructer.
                 CheckLinkResult CheckLinkResult = new CheckLinkResult(this);
                 CheckLinkResult.Show();
                 
