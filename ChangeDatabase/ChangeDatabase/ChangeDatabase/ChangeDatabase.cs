@@ -12,12 +12,13 @@ namespace ChangeDatabase
         #region Members
         private List<string> Article = new List<string>();
 
-        // File fields. Disse er måske arvet.
         private string FileName;
         private string Source = "Folder_test";
         private string Target = "Folder_test\\folder";
         private string SourcePath;
         private string TargetPath;
+        private string path;
+        // private string TrueOrFalse;
         #endregion
 
         // Input from User Input or Fake News result. - BRUGES TIL ADD
@@ -27,21 +28,23 @@ namespace ChangeDatabase
             PathMaker();
         }
 
-        public ChangeDatabase(string FileName)
+        public ChangeDatabase(string FileName /* string TrueOrFalse */)
         {
             this.FileName = FileName;
+            // this.TrueOrFalse = TrueOrFalse;
             PathMaker();
         }
 
         private void PathMaker()
         {
-            string path = Directory.GetCurrentDirectory();
+            path = Directory.GetCurrentDirectory();
             //Path goes 3 folders up.
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
             SourcePath = Path.Combine(path, Source);
             TargetPath = Path.Combine(path, Target);
         }
 
+        //Denne skal måske fjernes, hvis den ikke 
         public void RemoveArticle()
         {
             // Creating source and destionation path for file.
@@ -70,20 +73,91 @@ namespace ChangeDatabase
 
         private void FindTag()
         {
+            // Input vil være stien til databasen.
+            // I midlertidige writelines skal vi finde det nødvendige tag, eller oprette en ny.
+
             // Her skal programmet finde, hvilken tag som den valgte artikel skal ligge inde under.
             // Det kunne altså være en ide, at det kom som noget af det sidste.
             // Om det bliver indsat i falsk eller sandt, er vel et input.
+            bool done = false;
+            DirectoryInfo dirInfo;
+            do
+            {
+                dirInfo = MidlertidigUserinput();
+                Console.WriteLine("Enter current tag(1), new tag(2) or are you done(3)?");
+                string userChoice = Console.ReadLine();
+                if (userChoice == "1")
+                {
+                    Console.WriteLine("Under what tag?");
+                    string tag = Console.ReadLine();
+                     CreateFile(Path.Combine(dirInfo.ToString(), tag));
+                }
+                else if (userChoice == "2")
+                {
+                    Console.WriteLine("What is your new tag?");
+                    string tag = Console.ReadLine();
+                    string pathToTag = Path.Combine(dirInfo.ToString(), tag);
+                    CreateDirectoryTag(pathToTag);
+                    CreateFile(pathToTag);
+                }
+                else
+                    done = true;
+            }
+            while (done != true);
+
+            CreateFile(Path.Combine(dirInfo.ToString(), "All_articles"));
+            Console.WriteLine("done");
+            Console.ReadLine();
         }
 
-        public void AddArticle()
+        private void CreateDirectoryTag(string path /*string TrueOrFalse*/)
         {
-            string file = "";
+            DirectoryInfo SubDir = Directory.CreateDirectory(path);
+
+            Directory.CreateDirectory(path + "\\" + "True");
+            Directory.CreateDirectory(path + "\\" + "False");
+        }
+
+        // Dette skal gøres i winform. Den spørger om tag.
+        private DirectoryInfo MidlertidigUserinput()
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo(SourcePath);
+
+            foreach (DirectoryInfo Dir in dirInfo.GetDirectories())
+            {
+                Console.WriteLine(Dir);
+            }
+
+            return dirInfo;
+        }
+
+        // TrueFalse skal måske laves i property, da den er irreterende at flytte rundt i prog.
+        public void AddArticle(/*(string TrueFalse*/)
+        {
             // localFile = hele navnet på filen.
-            CreateFileName userInput = new CreateFileName();
-            string localFile = userInput.UserCreateFileName(file);
+
+
+            FindTag();
+        }
+
+        // DirInfo = Sti information
+        private void CreateFile(string PathToTag /*string TrueOrFalse*/)
+        {
+            //string localFile = UserCreateFileName();
+            string localFile = "01_02_2007_testfile.txt";
+            string TrueOrFalse = "True";
+            if(TrueOrFalse == "True")
+            {
+                PathToTag = Path.Combine(PathToTag, "True");
+            }
+            else
+            {
+                PathToTag = Path.Combine(PathToTag, "False");
+            }
+            
 
             // Opretter path for fil og filens tekst.
-            string destFile = Path.Combine(SourcePath, localFile);
+            string destFile = Path.Combine(PathToTag, localFile);
 
             // Sikre sig at der ikke bliver overwrited.
             if (!File.Exists(destFile))
@@ -103,12 +177,11 @@ namespace ChangeDatabase
             else
                 Console.WriteLine("Fail");
             Console.ReadLine();
+
         }
 
-    }
-    public class CreateFileName
-    {
-        public virtual string UserCreateFileName(string file)
+
+        public string UserCreateFileName()
         {
             // DETTE SKAL GØRES I WINFORM, MEN LIGGE PÅ NUVÆRENDE TIDSPUNKT SOM HARDCODE
             Console.WriteLine("Please enter the date, the newsarticle was written in format dd_mm_yy_Name");
@@ -124,5 +197,7 @@ namespace ChangeDatabase
             string localFile = dateOfArticle + articleName + ".txt";
             return localFile;
         }
+
     }
+
 }
