@@ -12,10 +12,12 @@ namespace CosineSimilarityLibrary
     {
         private List<string> InputText1;
         private List<string> InputText2;
-        private List<int> vecA = new List<int>();
-        private List<int> vecB = new List<int>();
-        private double _cosValue;
+        public List<int> vecA = new List<int>();
+        public List<int> vecB = new List<int>();
+        public double _cosValue = 0;
         private double _vecA = 0, _vecB = 0;
+        public int Procent = 0;
+        public string[] nouns;
 
 
         public CalculateCosine(List<string> InputText1, List<string> InputText2)
@@ -28,14 +30,14 @@ namespace CosineSimilarityLibrary
             Print();
         }
 
-        private void ReadNoun()
+        public void ReadNoun()
         {
             var stringSeperator = new string[] { Environment.NewLine };
-            string[] nouns = System.IO.File.ReadAllLines(@"C:\Users\Marcus\Dropbox\AAU\P2\Noter\nouns.txt");
-            CreateVector(nouns);
+            nouns = System.IO.File.ReadAllLines(@"C:\Users\Marcus\Dropbox\AAU\P2\Noter\nouns.txt");
+            CreateVector();
         }
 
-        private void CreateVector(string[] nouns)
+        private void CreateVector()
         {
             for (int i = 0; i < nouns.Length; i++)
             {
@@ -44,7 +46,7 @@ namespace CosineSimilarityLibrary
             }
         }
 
-        private int MatchNoun(string sPattern, List<string> textinput)
+        public int MatchNoun(string sPattern, List<string> textinput)
         {
             int counter = 0;
 
@@ -77,15 +79,15 @@ namespace CosineSimilarityLibrary
             return dotProduct;
         }
 
-        private double Magnitude(double vector)
+        public double Magnitude(double vector)
         {
             return Math.Sqrt(vector);
         }
 
         public void Print()
         {
-            int procent = (int)(_cosValue * 100);
-            Console.WriteLine($"Cosine similarity: {procent}%");
+            Procent = (int)(_cosValue * 100);
+            Console.WriteLine($"Cosine similarity: {Procent}%");
 
         }
     }
