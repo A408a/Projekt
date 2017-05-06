@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebArticleURLToText;
+using JaccardSimilarityLibrary;
 
 
 namespace GUIprototype
@@ -37,6 +38,30 @@ namespace GUIprototype
         private void TextSimilarityForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckButton_Click(object sender, EventArgs e)
+        {
+            if ((string)comboBox1.SelectedItem == "Jaccard similarity.")
+            {
+                //JaccardSimilarity TextSimilarity = new JaccardSimilarity()
+            }
+            else if ((string)comboBox1.SelectedItem == "Cosine similarity.")
+            {
+                MessageBox.Show("Cosine similarity was chosen");
+            }
+            else
+            {
+                MessageBox.Show("Both similarity methods were chosen");
+            }
+
+            
+                 
         }
     }
 }
