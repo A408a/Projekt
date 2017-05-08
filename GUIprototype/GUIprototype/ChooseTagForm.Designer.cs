@@ -1,6 +1,6 @@
 ﻿namespace GUIprototype
 {
-    partial class CheckText
+    partial class ChooseTagForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CheckLink = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.URLbox = new System.Windows.Forms.TextBox();
+            this.NewsTagsBox = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
-            // 
-            // CheckLink
-            // 
-            this.CheckLink.Location = new System.Drawing.Point(91, 170);
-            this.CheckLink.Name = "CheckLink";
-            this.CheckLink.Size = new System.Drawing.Size(75, 23);
-            this.CheckLink.TabIndex = 0;
-            this.CheckLink.Text = "Check Link";
-            this.CheckLink.UseVisualStyleBackColor = true;
-            this.CheckLink.Click += new System.EventHandler(this.CheckLink_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 48);
+            this.label1.Location = new System.Drawing.Point(29, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Please enter an URL to check";
+            this.label1.Size = new System.Drawing.Size(206, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Please choose a tag that matches the text\r\nfrom the list below.";
             // 
-            // URLbox
+            // NewsTagsBox
             // 
-            this.URLbox.Location = new System.Drawing.Point(57, 120);
-            this.URLbox.Name = "URLbox";
-            this.URLbox.Size = new System.Drawing.Size(154, 20);
-            this.URLbox.TabIndex = 2;
-            this.URLbox.TextChanged += new System.EventHandler(this.URLbox_TextChanged);
+            this.NewsTagsBox.FormattingEnabled = true;
+            this.NewsTagsBox.Items.AddRange(new object[] {
+            "Brexit",
+            "Crime",
+            "Egypt_attack",
+            "Koran_and_Bible",
+            "Stockholm_attack",
+            "Syria_war",
+            "Terror",
+            "Trump",
+            "US_Election",
+            "US_Travel_Ban",
+            "US_Healthcare",
+            "US_Trade_War"});
+            this.NewsTagsBox.Location = new System.Drawing.Point(58, 82);
+            this.NewsTagsBox.Name = "NewsTagsBox";
+            this.NewsTagsBox.Size = new System.Drawing.Size(156, 154);
+            this.NewsTagsBox.TabIndex = 1;
+            this.NewsTagsBox.SelectedIndexChanged += new System.EventHandler(this.NewsTagsBox_SelectedIndexChanged);
             // 
-            // CheckText
+            // ChooseTagForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.URLbox);
+            this.Controls.Add(this.NewsTagsBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CheckLink);
-            this.Name = "CheckText";
+            this.Name = "ChooseTagForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CheckText";
-            this.Load += new System.EventHandler(this.CheckText_Load);
+            this.Text = "ChooseTagForm";
+            this.Load += new System.EventHandler(this.ChooseTagForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,8 +82,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CheckLink;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox URLbox;
+        private System.Windows.Forms.CheckedListBox NewsTagsBox;
     }
 }

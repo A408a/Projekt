@@ -43,13 +43,18 @@ namespace GUIprototype
             else
             {
                 this.Hide();
-                TextSimilarityForm TextSimilarity = new TextSimilarityForm(this);
-                TextSimilarity.Show();
+                //TextSimilarityForm TextSimilarity = new TextSimilarityForm(this);
+                //TextSimilarity.Show();
+                ChooseTagForm TagsForm = new ChooseTagForm();
+                TagsForm.Show();
 
             }
 
         }
 
-        
+        private void CheckText_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

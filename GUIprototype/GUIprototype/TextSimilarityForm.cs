@@ -11,6 +11,7 @@ using WebArticleURLToText;
 using JaccardSimilarityLibrary;
 
 
+
 namespace GUIprototype
 {
     public partial class TextSimilarityForm : Form
@@ -26,9 +27,12 @@ namespace GUIprototype
             // Setting the instance of checkText equel to the parameter that is passed in the constructer. 
             this.pastForm = pastForm;
 
-            // The methods that are used by the constructer of this class are not so efficient. 
-            NewsPage article = new NewsPage(pastForm.URLbox.Text);
+           
+
+
         }
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -47,9 +51,14 @@ namespace GUIprototype
 
         private void CheckButton_Click(object sender, EventArgs e)
         {
+
+            // The methods that are used by the constructer of this class are not so efficient. 
+            NewsPage article = new NewsPage(pastForm.URLbox.Text);
+
             if ((string)comboBox1.SelectedItem == "Jaccard similarity.")
             {
-                //JaccardSimilarity TextSimilarity = new JaccardSimilarity()
+
+                MessageBox.Show("Jaccard similarity was chosen.");
             }
             else if ((string)comboBox1.SelectedItem == "Cosine similarity.")
             {
