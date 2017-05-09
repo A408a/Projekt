@@ -18,14 +18,14 @@ namespace GUIprototype
     {
 
         // Declaring an instance of the checkText form. 
-        private CheckText pastForm;
+        private ChooseTagForm pastFormInstance;
 
-        public TextSimilarityForm(CheckText pastForm)
+        public TextSimilarityForm(ChooseTagForm pastForm)
         {
             InitializeComponent();
 
             // Setting the instance of checkText equel to the parameter that is passed in the constructer. 
-            this.pastForm = pastForm;
+            pastFormInstance = pastForm;
 
            
 
@@ -52,8 +52,8 @@ namespace GUIprototype
         private void CheckButton_Click(object sender, EventArgs e)
         {
 
-            // The methods that are used by the constructer of this class are not so efficient. 
-            NewsPage article = new NewsPage(pastForm.URLbox.Text);
+            //// The methods that are used by the constructer of this class are not so efficient. 
+            //NewsPage article = new NewsPage(pastFormInstance.URLbox.Text);
 
             if ((string)comboBox1.SelectedItem == "Jaccard similarity.")
             {
