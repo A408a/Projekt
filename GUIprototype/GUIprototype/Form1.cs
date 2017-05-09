@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JaccardSimilarityLibrary;
+using ChangeDatabase;
 
 namespace GUIprototype
 {
@@ -31,6 +32,12 @@ namespace GUIprototype
             
             CheckText.Show();
             
+        }
+
+        private void UpdateDatabase_Click(object sender, EventArgs e)
+        {
+            // This will update the database automatically. 
+
         }
     }
 }
