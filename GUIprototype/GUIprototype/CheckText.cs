@@ -45,7 +45,7 @@ namespace GUIprototype
                 this.Hide();
                 //TextSimilarityForm TextSimilarity = new TextSimilarityForm(this);
                 //TextSimilarity.Show();
-                ChooseTagForm TagsForm = new ChooseTagForm();
+                ChooseTagForm TagsForm = new ChooseTagForm(this);
                 TagsForm.Show();
 
             }

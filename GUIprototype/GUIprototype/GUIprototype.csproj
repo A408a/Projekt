@@ -119,6 +119,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ChangeDatabase\ChangeDatabase\ChangeDatabase\ChangeDatabase.csproj">
+      <Project>{f532d9ee-dfa4-4008-b36f-d4541c9fc1b7}</Project>
+      <Name>ChangeDatabase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ClassLibraries\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary.csproj">
       <Project>{88172e03-757b-428e-9e25-6abcc18a9090}</Project>
       <Name>CheckLinkTrustworthinessLibrary</Name>

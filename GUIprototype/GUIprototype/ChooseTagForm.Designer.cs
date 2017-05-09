@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.NewsTagsBox = new System.Windows.Forms.CheckedListBox();
+            this.continueButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -57,18 +58,29 @@
             "US_Travel_Ban",
             "US_Healthcare",
             "US_Trade_War"});
-            this.NewsTagsBox.Location = new System.Drawing.Point(58, 82);
+            this.NewsTagsBox.Location = new System.Drawing.Point(79, 78);
             this.NewsTagsBox.Name = "NewsTagsBox";
             this.NewsTagsBox.Size = new System.Drawing.Size(156, 154);
             this.NewsTagsBox.TabIndex = 1;
             this.NewsTagsBox.SelectedIndexChanged += new System.EventHandler(this.NewsTagsBox_SelectedIndexChanged);
+            // 
+            // continueButton
+            // 
+            this.continueButton.Location = new System.Drawing.Point(227, 262);
+            this.continueButton.Name = "continueButton";
+            this.continueButton.Size = new System.Drawing.Size(75, 23);
+            this.continueButton.TabIndex = 2;
+            this.continueButton.Text = "Continue";
+            this.continueButton.UseVisualStyleBackColor = true;
+            this.continueButton.Click += new System.EventHandler(this.continueButton_Click);
             // 
             // ChooseTagForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(340, 307);
+            this.Controls.Add(this.continueButton);
             this.Controls.Add(this.NewsTagsBox);
             this.Controls.Add(this.label1);
             this.Name = "ChooseTagForm";
@@ -84,5 +96,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox NewsTagsBox;
+        private System.Windows.Forms.Button continueButton;
     }
 }

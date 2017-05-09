@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebArticleURLToText", "..\W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckLinkTrustworthinessLibrary", "..\ClassLibraries\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary.csproj", "{88172E03-757B-428E-9E25-6ABCC18A9090}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeDatabase", "..\ChangeDatabase\ChangeDatabase\ChangeDatabase\ChangeDatabase.csproj", "{F532D9EE-DFA4-4008-B36F-D4541C9FC1B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{88172E03-757B-428E-9E25-6ABCC18A9090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88172E03-757B-428E-9E25-6ABCC18A9090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88172E03-757B-428E-9E25-6ABCC18A9090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F532D9EE-DFA4-4008-B36F-D4541C9FC1B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F532D9EE-DFA4-4008-B36F-D4541C9FC1B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F532D9EE-DFA4-4008-B36F-D4541C9FC1B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F532D9EE-DFA4-4008-B36F-D4541C9FC1B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
