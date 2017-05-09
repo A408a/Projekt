@@ -18,15 +18,6 @@ namespace GUIprototype
             InitializeComponent();
         }
 
-        private CheckLinkResult otherform;
-        private void GetOtherForm()
-        {
-            otherform.url = URLbox.Text;
-        }
-
-       
-           
-
 
         private void URLbox_TextChanged(object sender, EventArgs e)
         {
@@ -36,19 +27,34 @@ namespace GUIprototype
 
         private void CheckLink_Click(object sender, EventArgs e)
         {
-            //string url = URLbox.Text;
+            
 
             CheckLinkTrustworthiness link = new CheckLinkTrustworthiness(URLbox.Text);
 
-            //if (link.DoesLinkToFakeNews)
-            //{
+            if (link.DoesLinkToFakeNews)
+            {
                 this.Hide();
-                CheckLinkResult CheckLinkResult = new CheckLinkResult();
+                // Create instance of form CheckLinkResult and pass the current CheckText as a parameter to the constructer.
+                CheckLinkResult CheckLinkResult = new CheckLinkResult(this);
                 CheckLinkResult.Show();
-            //}
+                
+            }
+
+            else
+            {
+                this.Hide();
+                //TextSimilarityForm TextSimilarity = new TextSimilarityForm(this);
+                //TextSimilarity.Show();
+                ChooseTagForm TagsForm = new ChooseTagForm();
+                TagsForm.Show();
+
+            }
 
         }
 
-        
+        private void CheckText_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

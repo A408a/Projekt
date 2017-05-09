@@ -13,12 +13,17 @@ namespace GUIprototype
 {
     public partial class CheckLinkResult : Form
     {
-        public CheckLinkResult()
+        // Declaring an instance of the checkText form. 
+        private CheckText pastForm;
+
+        public CheckLinkResult(CheckText pastForm)
         {
             InitializeComponent();
+            // Setting the instance of checkText equel to the parameter that is passed in the constructer. 
+            this.pastForm = pastForm;
         }
 
-        public string url;
+
         private void Messagelabel_Click(object sender, EventArgs e)
         {
 
@@ -29,18 +34,30 @@ namespace GUIprototype
 
         }
 
+        
+
         private void continueButton_Click(object sender, EventArgs e)
         {
 
-            
-           // NewsPage article = new NewsPage(text.Url);
+
+            NewsPage article = new NewsPage(pastForm.URLbox.Text);
+
+            textBox1.Text = pastForm.URLbox.Text;
+           
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            label1.Text = url;
-            
+
+        }
+
+        private void previousForm_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            pastForm.URLbox.Clear();
+            pastForm.Show();
+
         }
     }
 }

@@ -8,7 +8,7 @@ using HtmlAgilityPack;
 
 namespace WebArticleURLToTextLibrary
 {
-    class NewsPage
+    public class NewsPage
     {
         private static Dictionary<string, Tuple<string, string>> websites = new Dictionary<string, Tuple<string, string>>();  // Instance
 
