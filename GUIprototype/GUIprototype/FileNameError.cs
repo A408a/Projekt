@@ -35,6 +35,7 @@ namespace GUIprototype
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             ChangingDatabase.HandleException("Delete");
+            MessageBox.Show("The file has been deleted.");
         }
 
         private void RenameButton_Click(object sender, EventArgs e)
