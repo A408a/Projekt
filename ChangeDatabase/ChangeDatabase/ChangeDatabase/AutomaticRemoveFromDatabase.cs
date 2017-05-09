@@ -10,11 +10,16 @@ namespace ChangeDatabase
     public class AutomaticRemoveFromDatabase
     {
         
+        public string Dir()
+        {
+            return Directory.GetCurrentDirectory();
+        }
+
         public void FindOutdatedFolder()
         {
             string DirectoryName = "TestFolder"; //Nyheder_Database
             string path = Directory.GetCurrentDirectory();
-
+            
             //Path goes 3 folders up.
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
 

@@ -10,7 +10,7 @@ namespace ChangeDatabase
     {
         static void Main(string[] args)
         {
-            int start = 0;
+            int start = 1;
             if (start == 1)
             {
                 AutomaticRemoveFromDatabase Run = new AutomaticRemoveFromDatabase();
