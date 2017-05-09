@@ -9,7 +9,7 @@ namespace ChangeDatabase
 {
     public class AutomaticRemoveFromDatabase
     {
-        
+        public FileInfo FileInformation { get; private set; }
         public string Dir()
         {
             string path = Directory.GetCurrentDirectory();
@@ -50,39 +50,25 @@ namespace ChangeDatabase
 
         private void FindOutdatedFile(string File, FileInfo FileInformation)
         {
-            try
+            int month = Int32.Parse(File.Substring(3, 2));
+            int year = Int32.Parse(File.Substring(6, 4));
+
+            // If an article has an invalid Date.
+            if (year > DateTime.Now.Year || year < 0 || month > 12 || month < 0)
+                throw new ArgumentException();
+
+            // If current year is equal to article year
+            if (year == DateTime.Now.Year)
             {
-                int month = Int32.Parse(File.Substring(3, 2));
-                int year = Int32.Parse(File.Substring(6, 4));
-
-                // If an article has an invalid Date.
-                if (year > DateTime.Now.Year || year < 0 || month > 12 || month < 0)
-                    throw new ArgumentException();
-
-                // If current year is equal to article year
-                if (year == DateTime.Now.Year)
-                {
-                    // If article is less than 3 months old
-                    if (month < DateTime.Now.Month - 3)
-                        RemoveFile(FileInformation);
-                }
-                else
-                {
+                // If article is less than 3 months old
+                if (month < DateTime.Now.Month - 3)
                     RemoveFile(FileInformation);
-                }
+            }
+            else
+            {
+                RemoveFile(FileInformation);
             }
 
-            // month or year was not converted to int.
-            catch (FormatException)
-            {
-                HandleException(FileInformation);
-            }
-
-            // Date was invalid
-            catch (ArgumentException)
-            {
-                HandleException(FileInformation);
-            }
         }
 
         private void RemoveFile(FileInfo FileInformation)
@@ -90,22 +76,21 @@ namespace ChangeDatabase
             FileInformation.Delete();
         }
 
-        private void HandleException(FileInfo FileInformation)
+
+        // Handles exceptions. Is called from GUI
+        public void HandleException(string UserChoice)
         {
-            
             // DETTE SKAL LAVES I WINFORM
-            Console.WriteLine($"Found invalid article. \n{FileInformation.FullName}");
-            Console.WriteLine("Remove the article(0), or change the date to today?(1)");
-            string UserChoice = Console.ReadLine();
+         //   Console.WriteLine($"Found invalid article. \n{FileInformation.FullName}");
+           // Console.WriteLine("Remove the article(0), or change the date to today?(1)");
 
-
-            if (UserChoice == "0")
+            if (UserChoice == "Delete")
                 FileInformation.Delete();
             else
             {
                 // DETTE SKAL LAVES I WINFORM
-                Console.WriteLine("Enter title on article");
-                string Title = Console.ReadLine() + ".txt";
+                //Console.WriteLine("Enter title on article");
+                string Title = UserChoice + ".txt";
                 string CurrentDate = DateTime.Now.ToString("dd_MM_yyyy_");
                 string TargetPath = FileInformation.DirectoryName;
 
