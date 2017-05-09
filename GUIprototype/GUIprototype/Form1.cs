@@ -37,6 +37,39 @@ namespace GUIprototype
         private void UpdateDatabase_Click(object sender, EventArgs e)
         {
             // This will update the database automatically. 
+            AutomaticRemoveFromDatabase UpdateDatabase = new AutomaticRemoveFromDatabase();
+            try
+            {
+                UpdateDatabase.FindOutdatedFolder();
+                MessageBox.Show("The database has now been updated");
+            }
+
+            catch (ArgumentException)
+            {
+                // If something goes wrong with the file name. 
+                // The user is asked to enter a new name for the file. 
+
+                //TextBox FileNameBox = new TextBox();
+                //FileNameBox.Show();
+                //this.Hide();
+
+            }
+
+            catch (FormatException)
+            {
+
+                FileNameError FileNameForm = new FileNameError(UpdateDatabase);
+
+                this.Hide();
+                FileNameForm.Show();
+
+                
+            }
+
+             
+           // MessageBox.Show(UpdateDatabase.Dir());
+
+
 
         }
     }
