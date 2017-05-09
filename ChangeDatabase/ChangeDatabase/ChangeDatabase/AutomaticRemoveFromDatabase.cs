@@ -13,7 +13,7 @@ namespace ChangeDatabase
         public string Dir()
         {
             string path = Directory.GetCurrentDirectory();
-            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\"));
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\"));
             return path;
         }
 
@@ -23,7 +23,7 @@ namespace ChangeDatabase
             string path = Directory.GetCurrentDirectory();
             
             //Path goes 3 folders up.
-            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\..\"));
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\"));
 
             path = Path.Combine(path, DirectoryName);
             DirectoryInfo Dir = new DirectoryInfo(path);
