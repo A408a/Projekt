@@ -12,7 +12,7 @@ namespace ChangeDatabase
         
         public void FindOutdatedFolder()
         {
-            string DirectoryName = "TestFolder";
+            string DirectoryName = "TestFolder"; //Nyheder_Database
             string path = Directory.GetCurrentDirectory();
 
             //Path goes 3 folders up.
@@ -32,9 +32,11 @@ namespace ChangeDatabase
             DirectoryInfo DirTrue = new DirectoryInfo(Path.Combine(Dir.FullName, "True"));
             DirectoryInfo DirFalse = new DirectoryInfo(Path.Combine(Dir.FullName, "False"));
 
+            // Goes through all true articles
             foreach (FileInfo file in DirTrue.GetFiles())
                 FindOutdatedFile(file.ToString(), file);
 
+            // Goes through all false articles
             foreach (FileInfo file in DirFalse.GetFiles())
                 FindOutdatedFile(file.ToString(), file);
         }
@@ -46,6 +48,7 @@ namespace ChangeDatabase
                 int month = Int32.Parse(File.Substring(3, 2));
                 int year = Int32.Parse(File.Substring(6, 4));
 
+                // If an article has an invalid Date.
                 if (year > DateTime.Now.Year || year < 0 || month > 12 || month < 0)
                     throw new ArgumentException();
 
@@ -60,8 +63,6 @@ namespace ChangeDatabase
                 {
                     RemoveFile(FileInformation);
                 }
-
-                //Console.ReadLine();
             }
 
             // month or year was not converted to int.

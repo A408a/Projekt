@@ -12,28 +12,40 @@ namespace ChangeDatabase
         #region Members
         private List<string> Article = new List<string>();
 
+        private string Source = "Folder_test"; // Change_Database
+        private string Target; // Navnet på tag.
         private string FileName;
-        private string Source = "Folder_test";
-        private string Target = "Folder_test\\folder";
         private string SourcePath;
         private string TargetPath;
         private string path;
-        // private string TrueOrFalse;
+        private string TrueOrFalse;
+        private string Tag;
         #endregion
 
         // Input from User Input or Fake News result. - BRUGES TIL ADD
-        public ChangeDatabase(List<string> Article) //Input her vil være den tekst som skal rettes. Hvad indlæses den som? Tror List.
+        public ChangeDatabase(List<string> Article /* string TrueOrFalse */) //Input her vil være den tekst som skal rettes. Hvad indlæses den som? Tror List.
         {
             this.Article = Article;
-            PathMaker();
-        }
-
-        public ChangeDatabase(string FileName /* string TrueOrFalse */)
-        {
-            this.FileName = FileName;
             // this.TrueOrFalse = TrueOrFalse;
             PathMaker();
         }
+
+        // Removes all instances of certain article.
+        public ChangeDatabase(string FileName)
+        {
+            this.FileName = FileName;
+            PathMaker();
+        }
+
+        // Removes single instance of certain article.
+        //public ChangeDatabase(string FileName /* Tag */ /* string TrueOrFalse */)
+        //{
+        //  this.FileName = FileName;
+        // this.TrueOrFalse = TrueOrFalse;
+        // Something for the tag.
+        // PathMaker();
+//            TargetPath = Path.Combine(path, Target);
+        //}
 
         private void PathMaker()
         {
@@ -41,37 +53,52 @@ namespace ChangeDatabase
             //Path goes 3 folders up.
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
             SourcePath = Path.Combine(path, Source);
-            TargetPath = Path.Combine(path, Target);
+        }
+
+        public void RemoveArticleFromDatabase()
+        {
+            // Directory info of Database.
+            DirectoryInfo DatabaseDirectories = new DirectoryInfo(SourcePath);
+            // Goes through all tags in database
+            foreach(DirectoryInfo Tags in DatabaseDirectories.GetDirectories())
+            {
+                // Goes through the Tag True and False folders.
+                foreach(DirectoryInfo TrueOrFalseFolder in Tags.GetDirectories())
+                {
+                    // Goes through all articles in of the Tag true or False folder.
+                    foreach(FileInfo Article in TrueOrFalseFolder.GetFiles())
+                    {
+                        // If article matches the input article, remove it.
+                        if(Article.Name == FileName)
+                        {
+                            Article.Delete();
+                        }
+                    }
+                }
+            }
         }
 
         //Denne skal måske fjernes, hvis den ikke 
-        public void RemoveArticle()
+        public void RemoveArticleFromTag(string Tag, string TrueOrFalse)
         {
+            this.Tag = Tag;
+            this.TrueOrFalse = TrueOrFalse;
+
             // Creating source and destionation path for file.
-            string sourceFile = Path.Combine(SourcePath, FileName);
-            string destFile = Path.Combine(TargetPath, FileName);
-
-            // If folder is not found, create one.
-            if (!Directory.Exists(TargetPath))
+            string TargetPath = Path.Combine(SourcePath, Tag, TrueOrFalse, FileName);
+            FileInfo Article = new FileInfo(TargetPath);
+            Console.WriteLine(Article);
+            if (Article.Exists)
             {
-                Directory.CreateDirectory(TargetPath);
+                Article.Delete();
             }
-
-            if (Directory.Exists(sourceFile))
+            else
             {
-                // Copy file to chosen file. Overwrite if file is already there
-                File.Copy(sourceFile, destFile, true);
+                Console.WriteLine("Article not found.");
             }
-
-            // If file is in both source and dest. Delete file in source.
-            if (File.Exists(destFile) && File.Exists(sourceFile))
-                File.Delete(sourceFile);
-
-            Console.WriteLine("done");
-            Console.ReadLine();
         }
 
-        private void FindTag()
+        private void FindTag(/*TrueOrFalse*/)
         {
             // Input vil være stien til databasen.
             // I midlertidige writelines skal vi finde det nødvendige tag, eller oprette en ny.
@@ -110,10 +137,10 @@ namespace ChangeDatabase
             Console.ReadLine();
         }
 
-        private void CreateDirectoryTag(string path /*string TrueOrFalse*/)
+        private void CreateDirectoryTag(string path)
         {
-            DirectoryInfo SubDir = Directory.CreateDirectory(path);
-
+            Directory.CreateDirectory(path);
+            //Directory.CreateDirectory(Path.Combine())
             Directory.CreateDirectory(path + "\\" + "True");
             Directory.CreateDirectory(path + "\\" + "False");
         }
@@ -143,19 +170,12 @@ namespace ChangeDatabase
         // DirInfo = Sti information
         private void CreateFile(string PathToTag /*string TrueOrFalse*/)
         {
-            //string localFile = UserCreateFileName();
+            //string localFile = UserCreateFileName(); // Her laves filens navn. Skal måske laves i winform.
             string localFile = "01_02_2007_testfile.txt";
             string TrueOrFalse = "True";
-            if(TrueOrFalse == "True")
-            {
-                PathToTag = Path.Combine(PathToTag, "True");
-            }
-            else
-            {
-                PathToTag = Path.Combine(PathToTag, "False");
-            }
-            
 
+            PathToTag = Path.Combine(PathToTag, TrueOrFalse);
+            
             // Opretter path for fil og filens tekst.
             string destFile = Path.Combine(PathToTag, localFile);
 
@@ -170,16 +190,7 @@ namespace ChangeDatabase
             }
             else
                 Console.WriteLine("Article already in database");
-
-            // Kontrol af, at alt virkede.
-            if (File.Exists(destFile))
-                Console.WriteLine("Done");
-            else
-                Console.WriteLine("Fail");
-            Console.ReadLine();
-
         }
-
 
         public string UserCreateFileName()
         {
