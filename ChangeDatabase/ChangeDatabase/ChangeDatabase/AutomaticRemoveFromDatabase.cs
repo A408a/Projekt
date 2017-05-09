@@ -50,6 +50,7 @@ namespace ChangeDatabase
 
         private void FindOutdatedFile(string File, FileInfo FileInformation)
         {
+            this.FileInformation = FileInformation;
             int month = Int32.Parse(File.Substring(3, 2));
             int year = Int32.Parse(File.Substring(6, 4));
 
