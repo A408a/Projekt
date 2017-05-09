@@ -31,7 +31,14 @@ namespace GUIprototype
         private void ContinueButton_Click(object sender, EventArgs e)
         {
             ChangingDatabase.HandleException(ChangeNameBox.Text);
-            MessageBox.Show("The file has been renamed.");
+            if(DialogResult.OK ==  MessageBox.Show("The file has been renamed."))
+            {
+                this.Hide();
+                Form1 StartForm = new Form1();
+                StartForm.Show();
+            }
+                
+            
 
         }
 

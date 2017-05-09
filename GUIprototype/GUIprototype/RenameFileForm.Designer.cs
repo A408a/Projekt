@@ -44,7 +44,7 @@
             // 
             // ContinueButton
             // 
-            this.ContinueButton.Location = new System.Drawing.Point(87, 175);
+            this.ContinueButton.Location = new System.Drawing.Point(88, 175);
             this.ContinueButton.Name = "ContinueButton";
             this.ContinueButton.Size = new System.Drawing.Size(75, 23);
             this.ContinueButton.TabIndex = 2;

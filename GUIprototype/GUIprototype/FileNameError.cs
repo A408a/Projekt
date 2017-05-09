@@ -36,6 +36,14 @@ namespace GUIprototype
         {
             ChangingDatabase.HandleException("Delete");
             MessageBox.Show("The file has been deleted.");
+            // Not all files are deleted. This needs to be fixed. 
+
+            //if (DialogResult.OK == MessageBox.Show("The file has been renamed."))
+            //{
+            //    this.Hide();
+            //    Form1 StartForm = new Form1();
+            //    StartForm.Show();
+            //}
         }
 
         private void RenameButton_Click(object sender, EventArgs e)
