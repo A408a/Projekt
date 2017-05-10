@@ -81,17 +81,12 @@ namespace ChangeDatabase
         // Handles exceptions. Is called from GUI
         public void HandleException(string UserChoice)
         {
-            // DETTE SKAL LAVES I WINFORM
-         //   Console.WriteLine($"Found invalid article. \n{FileInformation.FullName}");
-           // Console.WriteLine("Remove the article(0), or change the date to today?(1)");
-
             if (UserChoice == "Delete")
                 FileInformation.Delete();
             else
             {
-                // DETTE SKAL LAVES I WINFORM
-                //Console.WriteLine("Enter title on article");
-                string Title = UserChoice + ".txt";
+                // Sets title as the input, with date as current day.
+                string Title = "_" + UserChoice + ".txt";
                 string CurrentDate = DateTime.Now.ToString("dd_MM_yyyy_");
                 string TargetPath = FileInformation.DirectoryName;
 
