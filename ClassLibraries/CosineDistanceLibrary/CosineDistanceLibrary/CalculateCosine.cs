@@ -34,7 +34,7 @@ namespace CosineSimilarityLibrary
         public void ReadNoun() // Loads every line of the embedded txt file
         {
             var stringSeperator = new string[] { Environment.NewLine };
-            string[] nouns = Resources.nouns.Split(stringSeperator, StringSplitOptions.None);
+            nouns = Resources.nouns.Split(stringSeperator, StringSplitOptions.None);
             CreateVector();
         }
 
