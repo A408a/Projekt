@@ -16,5 +16,11 @@ namespace GUIprototype
         {
             InitializeComponent();
         }
+
+        // The box must load the resent tags from the database folder. 
+        private void ChooseTagsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

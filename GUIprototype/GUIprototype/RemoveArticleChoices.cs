@@ -27,6 +27,14 @@ namespace GUIprototype
         private void DatabaseButton_Click(object sender, EventArgs e)
         {
             RemoveArticle.RemoveArticleFromDatabase();
+            if (DialogResult.OK == MessageBox.Show("Article has been removed"))
+            {
+                this.Hide();
+                Form1 FirstForm = new Form1();
+                FirstForm.Show();
+            }
+
+
         }
 
         private void TagButton_Click(object sender, EventArgs e)

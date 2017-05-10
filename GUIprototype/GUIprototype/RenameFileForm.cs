@@ -42,6 +42,9 @@ namespace GUIprototype
 
         }
 
-       
+        private void RenameFileForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
