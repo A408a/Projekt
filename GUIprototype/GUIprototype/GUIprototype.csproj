@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JaccardLibrary">
-      <HintPath>..\..\..\..\..\Dropbox\P1 Projekt\P2\Program\Class libraries\JaccardLibrary\JaccardLibrary\bin\Debug\JaccardLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -144,6 +141,10 @@
     <ProjectReference Include="..\..\ClassLibraries\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary.csproj">
       <Project>{88172e03-757b-428e-9e25-6abcc18a9090}</Project>
       <Name>CheckLinkTrustworthinessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ClassLibraries\JaccardLibrary\JaccardLibrary\JaccardSimilarityLibrary.csproj">
+      <Project>{723aacf6-754e-4d8d-a06c-95fa5df1ad57}</Project>
+      <Name>JaccardSimilarityLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\WebArticleURLToText\WebArticleURLToText\WebArticleURLToText.csproj">
       <Project>{3d866d74-7bc2-445c-9382-5fbac0c87f9b}</Project>
