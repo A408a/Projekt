@@ -38,20 +38,21 @@ namespace ChangeDatabase
         }
 
         // Removes single instance of certain article.
-        //public ChangeDatabase(string FileName /* Tag */ /* string TrueOrFalse */)
-        //{
-        //  this.FileName = FileName;
-        // this.TrueOrFalse = TrueOrFalse;
-        // Something for the tag.
-        // PathMaker();
-//            TargetPath = Path.Combine(path, Target);
-        //}
+        /*public ChangeDatabase(string FileName, string Tag, string TrueOrFalse)
+        {
+            this.FileName = FileName;
+            this.TrueOrFalse = TrueOrFalse;
+            this.Tag = Tag;
+            //Something for the tag.
+            PathMaker();
+            //            TargetPath = Path.Combine(path, Target);
+        }*/
 
         private void PathMaker()
         {
             path = Directory.GetCurrentDirectory();
             //Path goes 3 folders up.
-            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+            path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\"));
             SourcePath = Path.Combine(path, Source);
         }
 
@@ -87,7 +88,6 @@ namespace ChangeDatabase
             // Creating source and destionation path for file.
             string TargetPath = Path.Combine(SourcePath, Tag, TrueOrFalse, FileName);
             FileInfo Article = new FileInfo(TargetPath);
-            Console.WriteLine(Article);
             if (Article.Exists)
             {
                 Article.Delete();
@@ -98,8 +98,9 @@ namespace ChangeDatabase
             }
         }
 
-        private void FindTag(/*TrueOrFalse*/)
+        public void AddArticle(/*string userChoice, string TrueOrFalse*/)
         {
+            this.TrueOrFalse = TrueOrFalse;
             // Input vil være stien til databasen.
             // I midlertidige writelines skal vi finde det nødvendige tag, eller oprette en ny.
 
@@ -139,10 +140,9 @@ namespace ChangeDatabase
 
         private void CreateDirectoryTag(string path)
         {
-            Directory.CreateDirectory(path);
-            //Directory.CreateDirectory(Path.Combine())
-            Directory.CreateDirectory(path + "\\" + "True");
-            Directory.CreateDirectory(path + "\\" + "False");
+            Directory.CreateDirectory(path); //Creates the tag.
+            Directory.CreateDirectory(Path.Combine(path, "True")); //Creates True and False sub-folders.
+            Directory.CreateDirectory(Path.Combine(path, "False"));
         }
 
         // Dette skal gøres i winform. Den spørger om tag.
@@ -158,21 +158,11 @@ namespace ChangeDatabase
             return dirInfo;
         }
 
-        // TrueFalse skal måske laves i property, da den er irreterende at flytte rundt i prog.
-        public void AddArticle(/*(string TrueFalse*/)
-        {
-            // localFile = hele navnet på filen.
-
-
-            FindTag();
-        }
-
         // DirInfo = Sti information
-        private void CreateFile(string PathToTag /*string TrueOrFalse*/)
+        private void CreateFile(string PathToTag)
         {
             //string localFile = UserCreateFileName(); // Her laves filens navn. Skal måske laves i winform.
-            string localFile = "01_02_2007_testfile.txt";
-            string TrueOrFalse = "True";
+            string localFile = "01_02_2007_testfile.txt"; // Se ovenstående kommentar.
 
             PathToTag = Path.Combine(PathToTag, TrueOrFalse);
             
