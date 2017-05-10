@@ -8,7 +8,7 @@ using LevenshteinDistanceLibrary;
 using CosineSimilarityLibrary;
 using ProjektPrototypeProgram.Properties;
 using JaccardSimilarityLibrary;
-using System.Diagnostics; 
+using System.Diagnostics;  
 
 
 namespace ProjektPrototypeProgram

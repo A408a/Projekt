@@ -10,43 +10,24 @@ namespace ChangeDatabase
     {
         static void Main(string[] args)
         {
-            ChangeDatabase Run = new ChangeDatabase();
-            Run.AddArticle();
-            Run.RemoveArticle();
+            int start = 1;
+            if (start == 1)
+            {
+                AutomaticRemoveFromDatabase Run = new AutomaticRemoveFromDatabase();
+                Run.FindOutdatedFolder();
+            }
+            else
+            {
+                /*ChangeDatabase Run2 = new ChangeDatabase("test.txt");
+                Run2.RemoveArticleFromDatabase();
+
+                LoadEachWordToList TextA = new LoadEachWordToList(@"C:\Users\Jesper\Dropbox\AAU\P2\Program\Nyheder_Database\Crime\True\12_09_2016_New_York_Post_Anthony_Weiner_accused_of_sexting_relationship_with_15_year_old_girl.txt");
+                ChangeDatabase Run = new ChangeDatabase(TextA.Words);
+                Run.AddArticle();
+                Console.ReadLine();*/
+                ChangeDatabase Run1 = new ChangeDatabase("test.txt");
+                Run1.RemoveArticleFromTag("abc", "True");
+            }
         }
     }
 }
-
-/*
- Ændre database.
-Fjern automatisk gammelt indhold.
-Slet manuelt artikler i database. (I stedet for at slette disse, kan de evt. blive rykket i en trashbin mappe)
-Tilføj artikel (som txt fil)
-Efter kontrol af fake, skal brugeren have mulighed for at tilføje en artikel til databasen.
-
-
-Klasse:
-ChangeDatabase
-Skal måske arve fra en metode som finder alle artikler i database
-
-Metoder:
-En metode som står for at fjerne en artikel.
-RemoveArticle(input){}
-
-En metode som står for at tilføje en artikel.
-AddArticle(input){} - dd_mm_yy
-
-
-
-
-
-
-
-Hvornår skal brugeren kunne ændre i database?
-start og efter kontrol af Fake News.
-start: Brugeren får muligheden for at "ændre i database", hvorefter personen kan fjerne eller tilføje artikel. 
-(Personligt vil jeg kun sige fjern her, da vi har brug for at vide artikels angivelse af Fake først.)
-
-Slut: Brugeren kan vælge at tilføje den kontrollerede artikel.
-     
-     */

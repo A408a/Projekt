@@ -14,15 +14,13 @@ namespace LevenshteinDistanceLibrary
         public int TotalCount = 0;
         private int _charsInTextA;
         private int _charsInTextB;
-        private int _minimumChars;
         private int _linesInTextA;
         private int _linesInTextB;
         private double value = 0;
         private double levenshteinDistanceDouble = 0;
-//        private int Total = 0;
 
         public LevenshteinDistance(List<string> a, List<string> b, int CharsInTextA,
-                                   int CharsInTextB, int LinesInTextA, int LinesInTextB)//Constructor, som sætter streng a lig med Basis og b lig med Target
+                                   int CharsInTextB, int LinesInTextA, int LinesInTextB) 
         {
             Basis = a;
             Target = b;
@@ -31,79 +29,45 @@ namespace LevenshteinDistanceLibrary
             this._linesInTextA = LinesInTextA;
             this._linesInTextB = LinesInTextB;
 
-            this.CompareTexts();
-        }
-
-        private void FindMinAmountOfChars()
-        {
-            _minimumChars = Math.Min(_charsInTextA, _charsInTextB);
+            CompareTexts();
+            Print();
         }
 
         public void CompareTexts()
         {
-            if (_charsInTextA > _charsInTextB)  //Hvis tekst A er større end tekst B lægges A i B, og B i A
+            //Swap the texts if text A is larger than text B.
+            if (_charsInTextA > _charsInTextB)
             {
                 Swap();
             }
-            FindMinAmountOfChars(); //Finder antal chars fra den mindste tekst
 
-            for (int i = 0; i < _linesInTextA; i++) //Hver linje 'i' i tekst A bliver kørt igennem hver linje 'j' i tekst B
+            //The lines 'i' in text A are compared to the linjes 'j' in text B.
+            for (int i = 0; i < _linesInTextA; i++) 
             {
                 for (int j = 0; j < _linesInTextB; j++)
                 {
                     if (!(string.IsNullOrEmpty(Basis[i]) || string.IsNullOrEmpty(Target[j])))
                     {
-                        ListLevDis.Add(CalcLevenshteinDistance(Basis[i], Target[j])); //Beregner Levenshtein Distance
-                                                                                      //Returværdien lægges i en liste
+                        //Calculates the Levenshtein Distance. The return value is added to the list ListLevDis.
+                        ListLevDis.Add(CalcLevenshteinDistance(Basis[i], Target[j])); 
                     }
-
                 }
-                levenshteinDistanceDouble += ListLevDis.Min(); //Den mindste LD for hver linje i tekst A i forhold til tekst B
-                //Total += ListLevDis.Capacity;
-                //Total += ListLevDis.Capacity;//compoundassignes til levenshteinDistanceDouble
-                ListLevDis.Clear();  //Listen bliver clearet
+                //For every line in text A the smallest Levenshtein Distance
+                //is compoundassigned to levenshteinDistanceDouble.
+                levenshteinDistanceDouble += ListLevDis.Min();
+                //The list is cleared for the next iteration of the for loop.
+                ListLevDis.Clear();
             }
-            double LevDisPct = ((1 - (levenshteinDistanceDouble / _minimumChars)) * 100); //Finder LD i procent
-            value = Math.Round(LevDisPct, 2);  //Afrunder værdien til 2 decimaler
-
+            //Calculates the Levenshtein Distance in percent.
+            double LevDisPct = ((1 - (levenshteinDistanceDouble / _charsInTextA)) * 100);
+            //Rounds off the Levenshtein Distance to 2 decimals.
+            value = Math.Round(LevDisPct, 2);
         }
 
-        public int CalcLevenshteinDistance(string Basis, string Target) //Beregner Levenshtein Distance
+        public void Swap()
         {
-            int counter = 0;
-            int lengthB = Basis.Length;
-            int lengthT = Target.Length;
+            //Swaps text A and B.
 
-            var distances = new int[lengthB + 1, lengthT + 1]; //Opretter en matrix med rækker og søjler svarende til antal
-                                                               //chars i Basis-linje og Target-linje
-                                                               // for (int i = 0; i <= lengthB; distances[i, 0] = i++) { ++Total;}   //Fylder vores matrix's rækker med 0 .. Forkert
-                                                               // for (int j = 0; j <= lengthT; distances[0, j] = j++) { ++Total;}  //Fylder vores matrix's søjler med 0 .. Forkert
-
-            distances[0, 0] = 0; // Startværdi = 0,0
-            for (int i = 1; i <= lengthB; i++) //Sammenligner char for char streng B med streng T
-            {
-                distances[i, 0] = i;            // Fyld rækker med 0, 1, 2.. n
-                for (int j = 1; j <= lengthT; j++)
-                {
-
-                    distances[0, j] = j;        // Fyld søjler med 0, 1, 2.. n
-                  //  ++Total;
-                    counter++;
-                    int cost = Target[j - 1] == Basis[i - 1] ? 0 : 1; //Hvis T og B er ens tillægges cost værdien 0 ellers 1
-                    distances[i, j] = Math.Min
-                        (
-                        Math.Min(distances[i - 1, j] + 1, distances[i, j - 1] + 1), //Der findes den mindste værdi 
-                        distances[i - 1, j - 1] + cost                             //for de 3 mulige operationer i matricen
-                        );
-                }
-            }
-            TotalCount += counter;  //Totale antal sammenligninger char for char
-            return distances[lengthB, lengthT]; //Returnerer vores levenshtein distance fra det sidste element i matricen
-        }
-
-
-        public void Swap() //Ombytter tekst A og tekst B
-        {
             List<string> tempList = new List<string>();
 
             tempList = Basis;
@@ -119,9 +83,47 @@ namespace LevenshteinDistanceLibrary
             _linesInTextB = tempLines;
         }
 
-        public void Print() //Der printes - A Work in Progress
+        public int CalcLevenshteinDistance(string Basis, string Target)
         {
-//            Console.WriteLine(Total);
+            int cost = 0;
+            int lengthB = Basis.Length;
+            int lengthT = Target.Length;
+
+            //Initializes a matrix with rows equal to the number of chars in the Basis string 
+            //and columns equal to the number of chars in the Target string.
+            var distances = new int[lengthB + 1, lengthT + 1]; 
+
+            //Startvalue of the matrix = 0,0.
+            distances[0, 0] = 0; 
+
+            //Compares the Basis 'B' string char by char to the Target 'T' string.
+            for (int i = 1; i <= lengthB; i++) 
+            {
+                //Fills the rows with 0, 1, 2, ..., n.
+                distances[i, 0] = i;
+                for (int j = 1; j <= lengthT; j++)
+                {
+                    //Fills the columns with 0, 1, 2, ..., n.
+                    distances[0, j] = j;
+
+                    //If T and B are equal, cost is assigned to 0, if not cost is assigned to 1.
+                    cost = Target[j - 1] == Basis[i - 1] ? 0 : 1;
+
+                    //The lowest value of the 3 possible matrix-operations is found.
+                    distances[i, j] = Math.Min
+                        (
+                        Math.Min(distances[i - 1, j] + 1, distances[i, j - 1] + 1), 
+                        distances[i - 1, j - 1] + cost
+                        );
+                }
+            }
+            //Returns the Levenshtein Distance from the last element in the matrix.
+            return distances[lengthB, lengthT];
+        }
+
+        public void Print()
+        {
+            //Prints the Levenshtein Distance.
             Console.WriteLine($"Levenshtein similarity: {value}%");
         }
     }
