@@ -38,6 +38,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Gainsboro;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(139, 39);
             this.label1.Name = "label1";
@@ -48,9 +49,9 @@
             // 
             // checkText
             // 
-            this.checkText.Location = new System.Drawing.Point(333, 176);
+            this.checkText.Location = new System.Drawing.Point(348, 151);
             this.checkText.Name = "checkText";
-            this.checkText.Size = new System.Drawing.Size(75, 23);
+            this.checkText.Size = new System.Drawing.Size(92, 29);
             this.checkText.TabIndex = 1;
             this.checkText.Text = "Check text";
             this.checkText.UseVisualStyleBackColor = true;
@@ -58,7 +59,7 @@
             // 
             // UpdateDatabase
             // 
-            this.UpdateDatabase.Location = new System.Drawing.Point(23, 170);
+            this.UpdateDatabase.Location = new System.Drawing.Point(30, 149);
             this.UpdateDatabase.Name = "UpdateDatabase";
             this.UpdateDatabase.Size = new System.Drawing.Size(94, 35);
             this.UpdateDatabase.TabIndex = 2;
@@ -68,9 +69,9 @@
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(172, 178);
+            this.RemoveButton.Location = new System.Drawing.Point(184, 151);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(94, 27);
+            this.RemoveButton.Size = new System.Drawing.Size(111, 31);
             this.RemoveButton.TabIndex = 3;
             this.RemoveButton.Text = "Remove article";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -85,7 +86,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(459, 283);
+            this.BackgroundImage = global::GUIprototype.Properties.Resources.Edited;
+            this.ClientSize = new System.Drawing.Size(490, 311);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.UpdateDatabase);
             this.Controls.Add(this.checkText);

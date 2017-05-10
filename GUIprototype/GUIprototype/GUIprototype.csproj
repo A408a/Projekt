@@ -125,6 +125,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RemoveArticleChoices.resx">
       <DependentUpon>RemoveArticleChoices.cs</DependentUpon>
@@ -147,6 +148,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Edited" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -168,6 +170,9 @@
       <Project>{3d866d74-7bc2-445c-9382-5fbac0c87f9b}</Project>
       <Name>WebArticleURLToText</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32943639343_07211f6317_z.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
