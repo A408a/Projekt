@@ -24,6 +24,7 @@ namespace GUIprototype
 
         }
 
+
         private void DatabaseButton_Click(object sender, EventArgs e)
         {
             RemoveArticle.RemoveArticleFromDatabase();
@@ -34,12 +35,14 @@ namespace GUIprototype
                 FirstForm.Show();
             }
 
-
         }
 
         private void TagButton_Click(object sender, EventArgs e)
         {
             // Create form for entering tag. 
+            SelectTagForArticle TagForArticleForm = new SelectTagForArticle();
+            this.Hide();
+            TagForArticleForm.Show();
 
         }
     }

@@ -25,10 +25,29 @@ namespace GUIprototype
             ChooseTagsBox.Items.AddRange(Array);
         }
 
-        // The box must load the resent tags from the database folder. 
+         
         private void ChooseTagsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SelectTagForArticle_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            ChangeDatabase.ChangeDatabase RemoveArticle;
+            // The method does not contain a parameter to enter multible tags. 
+            //RemoveArticle.RemoveArticleFromTag()
+
+            if (DialogResult.OK == MessageBox.Show("Article has been removed from database tags"))
+            {
+                this.Hide();
+                Form1 FirstForm = new Form1();
+                FirstForm.Show();
+            }
         }
     }
 }
