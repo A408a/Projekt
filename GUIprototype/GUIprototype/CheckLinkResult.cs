@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebArticleURLToText;
+using System.Net;
 
 namespace GUIprototype
 {
@@ -39,11 +40,25 @@ namespace GUIprototype
         private void continueButton_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+                NewsPage article = new NewsPage(pastForm.URLbox.Text);
+                // This code is used to test if the variabel is send to the next form. 
+                textBox1.Text = pastForm.URLbox.Text;
+            }
 
-            NewsPage article = new NewsPage(pastForm.URLbox.Text);
+            catch (WebException Web)
+            {
 
-            textBox1.Text = pastForm.URLbox.Text;
-           
+                MessageBox.Show(Web.Message);
+            }
+
+            catch(ArgumentException Argument)
+            {
+                MessageBox.Show(Argument.Message);
+            }
+
+
 
         }
 
