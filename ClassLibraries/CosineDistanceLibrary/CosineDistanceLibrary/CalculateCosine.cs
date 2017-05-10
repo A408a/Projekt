@@ -33,10 +33,8 @@ namespace CosineSimilarityLibrary
 
         public void ReadNoun() // Loads every line of the embedded txt file
         {
-            // Makes the path to nouns
-            string path = $"{Directory.GetCurrentDirectory()}\\CosineDistanceLibrary\\Resources\\nouns.txt";
-            var stringSeperator = new string[] { Environment.NewLine }; // Splits at every newline
-            nouns = File.ReadAllLines(path); // C:\Users\Marcus\Dropbox\AAU\P2\Noter\nouns.txt
+            var stringSeperator = new string[] { Environment.NewLine };
+            string[] nouns = Resources.nouns.Split(stringSeperator, StringSplitOptions.None);
             CreateVector();
         }
 
