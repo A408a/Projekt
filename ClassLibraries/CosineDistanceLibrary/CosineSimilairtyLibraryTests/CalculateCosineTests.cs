@@ -42,7 +42,7 @@ namespace CosineSimilarityLibrary.Tests
 
             var test = new CalculateCosine(Input1, Input2);
 
-            Assert.AreEqual(test.Magnitude(vector), 4);
+            Assert.AreEqual(test.SquareRoot(vector), 4);
         }
 
         [Test()]
