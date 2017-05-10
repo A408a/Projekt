@@ -1,58 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CheckLinkTrustworthinessLibrary.Properties;
 
 namespace CheckLinkTrustworthinessLibrary
 {
     public class CheckLinkTrustworthiness
     {
-        private string LinkFromPrompt;
-        public bool DoesLinkToFakeNews = false;
-        private List<string> ListOfFakeNewsWebsites = new List<string>();
-        
         public CheckLinkTrustworthiness(string linkFromPrompt)
         {
             this.LinkFromPrompt = linkFromPrompt;
+            this.DoesLinkToFakeNews = false;
 
-            IsLinkNull();
+            IsLinkNullOrEmpty();
         }
+
+        private string LinkFromPrompt { get; set; }
+        public bool DoesLinkToFakeNews { get; private set; }
 
         //Checks if link is null.
         //If link is not null call check link.
-        private void IsLinkNull()
+        private void IsLinkNullOrEmpty()
         {
-            if (LinkFromPrompt == null)
-                throw new ArgumentNullException("Input was null.");
+            if (string.IsNullOrWhiteSpace(LinkFromPrompt))
+                throw new ArgumentException("Input was incorrect");
             else
-                CheckLink();
+                CheckLink(LinkFromPrompt);
         }
 
-        //Checks if the link the user has put in contains a fake domain.
-        private void CheckLink()
+        //Checks if the link from the user contains a fake domain.
+        private void CheckLink(string linkToCheck)
         {
             //Uses the database as a resource which is read as a string. 
             //Splits the string at newlines into an array of strings,
             //which is turned to a list and assigned to ListOfFakeNewsWebsites.
-            ListOfFakeNewsWebsites = Resources.FakeNewsWebsites.Split(new string[] { Environment.NewLine },
+            List<string> ListOfFakeNewsWebsites = Resources.FakeNewsWebsites.Split(new string[] { Environment.NewLine },
                                                                       StringSplitOptions.RemoveEmptyEntries).ToList();
 
             int NumberOfFakeNewsWebsites = ListOfFakeNewsWebsites.Count();
 
+            //Checks if the domain of the fake news website is contained in the link from the prompt.
             for (int i = 0; i < NumberOfFakeNewsWebsites && DoesLinkToFakeNews != true; i++)
-                if (LinkFromPrompt.Contains(ListOfFakeNewsWebsites[i]))
+                if (linkToCheck.Contains(ListOfFakeNewsWebsites[i]))
+                {
                     DoesLinkToFakeNews = true;
+                    break;
+                }
         }
-
-        //Prints if the link leads to a fake news domain.
-        //private void PrintResult()
-        //{
-        //    if (DoesLinkToFakeNews)
-        //        Console.WriteLine("Link does not lead to a trustworthy site. ");
-        //    else
-        //        Console.WriteLine("");
-        //}
     }
 }
