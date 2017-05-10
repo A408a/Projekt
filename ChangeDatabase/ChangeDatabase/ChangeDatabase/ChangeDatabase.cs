@@ -12,7 +12,7 @@ namespace ChangeDatabase
         #region Members
         private List<string> Article = new List<string>();
 
-        private string Source = "Folder_test"; // Change_Database
+        private string Source = "TestFolder"; // Change_Database
         private string Target; // Navnet på tag.
         private string FileName;
         private string SourcePath;

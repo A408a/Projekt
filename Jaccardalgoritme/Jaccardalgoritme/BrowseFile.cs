@@ -54,5 +54,10 @@ namespace Jaccardalgoritme
             jaccardSimilarity = nytekstA.CalculateSimilarity(nytekstA.shingles, nytekstB.shingles);
             this.label1.Text = "The Jaccard similarity of the two texts is: " + jaccardSimilarity;
         }
+
+        private void BrowseFile_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -14,6 +14,8 @@ namespace GUIprototype
 {
     public partial class Form1 : Form
     {
+
+        public string Text;
         public Form1()
         {
             InitializeComponent();
@@ -71,6 +73,29 @@ namespace GUIprototype
 
 
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Text = openFileDialog1.SafeFileName;
+
+                ChangeDatabase.ChangeDatabase RemoveArticle = new ChangeDatabase.ChangeDatabase(Text);
+
+                RemoveArticleChoices RemoveArticleForm = new RemoveArticleChoices(RemoveArticle);
+
+                this.Hide();
+
+                RemoveArticleForm.Show();
+             
+            }
+                
         }
     }
 }

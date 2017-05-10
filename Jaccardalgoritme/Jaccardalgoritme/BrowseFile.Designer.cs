@@ -105,6 +105,7 @@
             this.Controls.Add(this.filePath);
             this.Name = "BrowseFile";
             this.Text = "BrowseFile";
+            this.Load += new System.EventHandler(this.BrowseFile_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
