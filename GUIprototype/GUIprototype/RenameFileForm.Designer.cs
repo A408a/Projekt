@@ -71,6 +71,7 @@
             this.Name = "RenameFileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RenameFileForm";
+            this.Load += new System.EventHandler(this.RenameFileForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

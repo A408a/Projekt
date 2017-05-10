@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.ChooseTagsBox = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // checkedListBox1
+            // ChooseTagsBox
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(72, 83);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 139);
-            this.checkedListBox1.TabIndex = 0;
+            this.ChooseTagsBox.FormattingEnabled = true;
+            this.ChooseTagsBox.Location = new System.Drawing.Point(72, 83);
+            this.ChooseTagsBox.Name = "ChooseTagsBox";
+            this.ChooseTagsBox.Size = new System.Drawing.Size(120, 139);
+            this.ChooseTagsBox.TabIndex = 0;
+            this.ChooseTagsBox.SelectedIndexChanged += new System.EventHandler(this.ChooseTagsBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -55,7 +56,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.ChooseTagsBox);
             this.Name = "SelectTagForArticle";
             this.Text = "SelectTagForArticle";
             this.ResumeLayout(false);
@@ -65,7 +66,7 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox ChooseTagsBox;
         private System.Windows.Forms.Label label1;
     }
 }
