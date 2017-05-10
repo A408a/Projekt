@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LoadTextLibrary">
-      <HintPath>..\..\..\..\..\Dropbox\P1 Projekt\P2\Program\Class libraries\LoadTextLibrary\LoadTextLibrary\bin\Debug\LoadTextLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Desktop\LoadTextLibrary\LoadTextLibrary\bin\Debug\LoadTextLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

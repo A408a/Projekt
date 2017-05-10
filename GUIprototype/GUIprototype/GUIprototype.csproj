@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JaccardLibrary">
-      <HintPath>..\..\..\..\..\Dropbox\P1 Projekt\P2\Program\Class libraries\JaccardLibrary\JaccardLibrary\bin\Debug\JaccardLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,6 +64,12 @@
     <Compile Include="ChooseTagForm.Designer.cs">
       <DependentUpon>ChooseTagForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileNameError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileNameError.Designer.cs">
+      <DependentUpon>FileNameError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenameFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenameFileForm.Designer.cs">
+      <DependentUpon>RenameFileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextSimilarityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +99,9 @@
     <EmbeddedResource Include="ChooseTagForm.resx">
       <DependentUpon>ChooseTagForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FileNameError.resx">
+      <DependentUpon>FileNameError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RenameFileForm.resx">
+      <DependentUpon>RenameFileForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextSimilarityForm.resx">
       <DependentUpon>TextSimilarityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +141,10 @@
     <ProjectReference Include="..\..\ClassLibraries\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary\CheckLinkTrustworthinessLibrary.csproj">
       <Project>{88172e03-757b-428e-9e25-6abcc18a9090}</Project>
       <Name>CheckLinkTrustworthinessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ClassLibraries\JaccardLibrary\JaccardLibrary\JaccardSimilarityLibrary.csproj">
+      <Project>{723aacf6-754e-4d8d-a06c-95fa5df1ad57}</Project>
+      <Name>JaccardSimilarityLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\WebArticleURLToText\WebArticleURLToText\WebArticleURLToText.csproj">
       <Project>{3d866d74-7bc2-445c-9382-5fbac0c87f9b}</Project>

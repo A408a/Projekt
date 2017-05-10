@@ -25,10 +25,7 @@ namespace GUIprototype
             InitializeComponent();
 
             // Setting the instance of checkText equel to the parameter that is passed in the constructer. 
-            pastFormInstance = pastForm;
-
-           
-
+            pastFormInstance = pastForm; 
 
         }
 

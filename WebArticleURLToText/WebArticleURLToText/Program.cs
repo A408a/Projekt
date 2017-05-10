@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,14 +13,34 @@ namespace WebArticleURLToText
         {
             Console.Write(" Insert URL Address >> ");
             string Webaddress = Console.ReadLine();
-            Console.Clear();
-            NewsPage page = new NewsPage(Webaddress);                   // New Instance.
-            Console.WriteLine(page.Headline);
-            foreach (string text in page.BodyText)
+            try
             {
-                Console.WriteLine(text);                 // Print Text content
-            }
+                NewsPage page = new NewsPage(Webaddress);                   // New Instance.
 
+                Console.Clear();
+                Console.WriteLine(page.Headline);
+                foreach (string text in page.BodyText)
+                {
+                    Console.WriteLine(text);                 // Print Text content
+                }
+
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (WebException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (KeyNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadKey();
         }
     }
