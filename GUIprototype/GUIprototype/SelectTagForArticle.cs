@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GUIprototype
 {
@@ -15,6 +16,13 @@ namespace GUIprototype
         public SelectTagForArticle()
         {
             InitializeComponent();
+
+            // The box must load the resent tags from the database folder. 
+            ChooseTagsBox.CheckOnClick = true;
+
+            string[] Array = (from dir in Directory.GetDirectories(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database") select Path.GetFileNameWithoutExtension(dir)).ToArray();
+
+            ChooseTagsBox.Items.AddRange(Array);
         }
 
         // The box must load the resent tags from the database folder. 

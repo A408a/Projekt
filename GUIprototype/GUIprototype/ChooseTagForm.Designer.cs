@@ -45,19 +45,6 @@
             // NewsTagsBox
             // 
             this.NewsTagsBox.FormattingEnabled = true;
-            this.NewsTagsBox.Items.AddRange(new object[] {
-            "Brexit",
-            "Crime",
-            "Egypt_attack",
-            "Koran_and_Bible",
-            "Stockholm_attack",
-            "Syria_war",
-            "Terror",
-            "Trump",
-            "US_Election",
-            "US_Travel_Ban",
-            "US_Healthcare",
-            "US_Trade_War"});
             this.NewsTagsBox.Location = new System.Drawing.Point(79, 78);
             this.NewsTagsBox.Name = "NewsTagsBox";
             this.NewsTagsBox.Size = new System.Drawing.Size(156, 154);
