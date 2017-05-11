@@ -40,8 +40,8 @@ namespace GUIprototype
 
         }
 
-        //private void RemoveButton_Click(object sender, EventArgs e)
-        //{
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
         //    AddOrRemoveArticle RemoveArticle = new AddOrRemoveArticle();
 
         //    foreach (CheckedListBox tag in  )
@@ -58,6 +58,6 @@ namespace GUIprototype
         //        Form1 FirstForm = new Form1();
         //        FirstForm.Show();
         //    }
-        //}
+        }
     }
 }
