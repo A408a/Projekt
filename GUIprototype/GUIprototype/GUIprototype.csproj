@@ -78,12 +78,6 @@
     <Compile Include="RemoveArticleChoices.Designer.cs">
       <DependentUpon>RemoveArticleChoices.cs</DependentUpon>
     </Compile>
-    <Compile Include="RenameFileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RenameFileForm.Designer.cs">
-      <DependentUpon>RenameFileForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SelectTagForArticle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,9 +114,6 @@
     </Compile>
     <EmbeddedResource Include="RemoveArticleChoices.resx">
       <DependentUpon>RemoveArticleChoices.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RenameFileForm.resx">
-      <DependentUpon>RenameFileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectTagForArticle.resx">
       <DependentUpon>SelectTagForArticle.cs</DependentUpon>
