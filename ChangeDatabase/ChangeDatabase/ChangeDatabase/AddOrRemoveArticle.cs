@@ -18,7 +18,7 @@ namespace ChangeDatabase
         private string TrueOrFalse;
         #endregion
 
-        // Input from User Input or Fake News result. - BRUGES TIL ADD
+        // Input from User Input or Fake News result.
         public AddOrRemoveArticle(List<string> Article /* string TrueOrFalse */) //Input her vil være den tekst som skal rettes. Hvad indlæses den som? Tror List.
         {
             this.Article = Article;
@@ -36,7 +36,7 @@ namespace ChangeDatabase
         private void PathMaker()
         {
             path = Directory.GetCurrentDirectory();
-            //Path goes 3 folders up.
+            //Path goes 4 folders up.
             path = Path.GetFullPath(Path.Combine(path, @"..\..\..\..\"));
             SourcePath = Path.Combine(path, Source);
         }
@@ -64,7 +64,6 @@ namespace ChangeDatabase
             }
         }
 
-        //Denne skal måske fjernes, hvis den ikke 
         public void RemoveArticleFromTag(string Tag)
         {
             // Creating source and destionation path for True file instance.
