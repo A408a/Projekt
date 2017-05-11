@@ -21,11 +21,14 @@ namespace GUIprototype
             // The box must load the resent tags from the database folder. 
             ChooseTagsBox.CheckOnClick = true;
 
-            string[] Array = (from dir in Directory.GetDirectories(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database") select Path.GetFileNameWithoutExtension(dir)).ToArray();
+            string[] Tags = (from dir in Directory.GetDirectories(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database") select Path.GetFileNameWithoutExtension(dir)).ToArray();
 
-            ChooseTagsBox.Items.AddRange(Array);
+            ChooseTagsBox.Items.AddRange(Tags);
+            
+            
         }
 
+        
          
         private void ChooseTagsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -37,19 +40,24 @@ namespace GUIprototype
 
         }
 
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-//            AddOrRemoveArticle RemoveArticle = new AddOrRemoveArticle();
-            // The method does not contain a parameter to enter multible tags. 
-            //RemoveArticle.RemoveArticleFromTag()
-            
+        //private void RemoveButton_Click(object sender, EventArgs e)
+        //{
+        //    AddOrRemoveArticle RemoveArticle = new AddOrRemoveArticle();
 
-            if (DialogResult.OK == MessageBox.Show("Article has been removed from database tags"))
-            {
-                this.Hide();
-                Form1 FirstForm = new Form1();
-                FirstForm.Show();
-            }
-        }
+        //    foreach (CheckedListBox tag in  )
+        //    {
+
+        //    }
+        //   RemoveArticle.RemoveArticleFromTag()
+
+
+
+        //    if (DialogResult.OK == MessageBox.Show("Article has been removed from database tags"))
+        //    {
+        //        this.Hide();
+        //        Form1 FirstForm = new Form1();
+        //        FirstForm.Show();
+        //    }
+        //}
     }
 }
