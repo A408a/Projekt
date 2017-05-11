@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaccardSimilarityLibrary", "JaccardLibrary\JaccardSimilarityLibrary.csproj", "{723AACF6-754E-4D8D-A06C-95FA5DF1AD57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaccardSimilarityLibraryTests", "JaccardSimilarityLibraryTests\JaccardSimilarityLibraryTests.csproj", "{7B4AEF85-FBB9-491B-B5DB-B63BB0BB3899}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{723AACF6-754E-4D8D-A06C-95FA5DF1AD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{723AACF6-754E-4D8D-A06C-95FA5DF1AD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{723AACF6-754E-4D8D-A06C-95FA5DF1AD57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B4AEF85-FBB9-491B-B5DB-B63BB0BB3899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B4AEF85-FBB9-491B-B5DB-B63BB0BB3899}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B4AEF85-FBB9-491B-B5DB-B63BB0BB3899}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B4AEF85-FBB9-491B-B5DB-B63BB0BB3899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
