@@ -24,46 +24,36 @@ namespace WebArticleURLToText
             GetArticleBody();
         }
 
-        // Method that downloads the HTMLcode from website.
+        //Method that downloads the HTMLcode from website.
         private HtmlDocument GetWebsite(string webaddress)  
         {
-            if (webaddress == null)
-            {
-                throw new ArgumentException("No webaddress");
-            }
-            else
-            {
-                HtmlDocument doc1 = new HtmlDocument();
-                //Intanciates a WebClient and specifies the encoding type to UTF8 to prevent weird characters
-                WebClient client = new WebClient { Encoding = System.Text.Encoding.UTF8 };
-                //Fetches Html document of the webite
-                string websiteString = client.DownloadString(webaddress);          
-                //Loads the websiteString to a HtmlDocument type              
-                doc1.LoadHtml(websiteString);
-                //Gets the host name of a website eks. "http:/www.123.com/1341341 --> www.123.com
-                domain = new Uri(webaddress).Host;
+            HtmlDocument doc1 = new HtmlDocument();
+            //Intanciates a WebClient and specifies the encoding type to UTF8 to prevent weird characters
+            WebClient client = new WebClient { Encoding = System.Text.Encoding.UTF8 };
+            //Fetches Html document of the webite
+            string websiteString = client.DownloadString(webaddress);          
+            //Loads the websiteString to a HtmlDocument type              
+            doc1.LoadHtml(websiteString);
+            //Gets the host name of a website eks. "http:/www.123.com/1341341 --> www.123.com
+            domain = new Uri(webaddress).Host;
 
-                return doc1;
-            }
+            return doc1;
+            
         }
 
-        // Methode that gets article nods - (A node is any piece of individual content)
+        //Methode that gets article nods - (A node is any piece of individual content)
         private HtmlNode GetArticleNode()    
         {
-            if (domain == null)
-                throw new ArgumentNullException("Input is null");
-            else
-            {
-                //Gets the Xpath from the dictionary
-                //A turple contains a set of values in this case 2
-                Tuple<string, string> vals = websites[domain];
-                //GetElementById: Retrieves a single HtmlElement using the element's ID attribute as a search key.
-                //SelectNodes: Return a list of nodes matching the Xpath expression, but we only want the nodes at the end of the path -> Last();
-                return doc.GetElementbyId(vals.Item1).SelectNodes(vals.Item2).Last(); 
-            }
+            //Gets the Xpath from the dictionary
+            //A turple contains a set of values in this case 2
+            Tuple<string, string> vals = websites[domain];
+            //GetElementById: Retrieves a single HtmlElement using the element's ID attribute as a search key.
+            //SelectNodes: Return a list of nodes matching the Xpath expression, but we only want the nodes at the end of the path -> Last();
+            return doc.GetElementbyId(vals.Item1).SelectNodes(vals.Item2).Last(); 
+            
         }
 
-        // Methode: Gets the article title.
+        //Methode: Gets the article title.
         private void GetArticleHead()   
         {
             //We have one node which is converted to a list of childnodes wherein
@@ -75,14 +65,14 @@ namespace WebArticleURLToText
             }
         }
 
-        // Methode: Gets the article content.
+        //Methode: Gets the article content.
         private void GetArticleBody()   
         {
             //We have one node which is converted to a list of childnodes wherein
             //we search nodes classified with p. p: paragraph, for regular text in Htmlcode  
             foreach (HtmlNode node in GetArticleNode().SelectNodes("//p"))
             {
-                //If the node is a p class node it ignored
+                //If the node is a p class node, the node is ignored
                 if (node.ChildAttributes("class").Count() != 0)
                 {
                     continue;
@@ -102,14 +92,14 @@ namespace WebArticleURLToText
             websites.Add("news.sky.com", Tuple.Create("", "//html/body/div[1]/div[2]"));
             websites.Add("www.washingtonpost.com", Tuple.Create("article-body", "//article"));
             websites.Add("www.cbsnews.com", Tuple.Create("article-entry", "//div[2]"));
-            websites.Add("www.huffingtonpost.com", Tuple.Create("us_jhhcvkh6546", "//div"));
+            //websites.Add("www.huffingtonpost.com", Tuple.Create("us_jhhcvkh6546", "//div"));
             //websites.Add("tytnetwork.com", Tuple.Create("post-469222", "//div[2]/div"));
             //websites.Add("abcnews.go.com", Tuple.Create("article-feed", "//article[1]/div"));
             //websites.Add("edition.cnn.com", Tuple.Create("body-text", "//div/div[1]"));
             //Fake
             websites.Add("abcnews.com.co", Tuple.Create("", "//html/body/div"));
             //websites.Add("www.breitbart.com", Tuple.Create("post-6594146", "//div"));
-            websites.Add("www.cnn.com.de", Tuple.Create("post-705", "//div[3]"));
+            //websites.Add("www.cnn.com.de", Tuple.Create("post-705", "//div[3]"));
         }
     }
 }
