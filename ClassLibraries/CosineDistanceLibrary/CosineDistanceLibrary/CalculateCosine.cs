@@ -26,6 +26,12 @@ namespace CosineSimilarityLibrary
             this.InputText1 = InputText1; // List containing each word from the text
             this.InputText2 = InputText2;
 
+            if (!InputText1.Any())
+                throw new EmptyTextException("The first text is empty");
+
+            if (!InputText2.Any())
+                throw new EmptyTextException("The second text is empty");
+
             ReadNoun();
             _cosValue = CalculateCosineSimilarity();
             Print();
