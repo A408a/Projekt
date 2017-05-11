@@ -8,19 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChangeDatabase;
+using System.IO;
 
 namespace GUIprototype
 {
     public partial class RenameFileForm : Form
     {
-        public RenameFileForm(AutomaticRemoveFromDatabase ChangingDatabase)
+        public RenameFileForm(FileInfo InvalidFile, AutomaticRemoveFromDatabase EditFile)
         {
             InitializeComponent();
 
-            this.ChangingDatabase = ChangingDatabase;
+            this.EditFile = EditFile;
         }
-
-        AutomaticRemoveFromDatabase ChangingDatabase;
+        FileInfo InvalidFile;
+        AutomaticRemoveFromDatabase EditFile;
 
 
         private void ChangeNameBox_TextChanged(object sender, EventArgs e)
@@ -30,15 +31,13 @@ namespace GUIprototype
 
         private void ContinueButton_Click(object sender, EventArgs e)
         {
-            ChangingDatabase.HandleException(ChangeNameBox.Text);
+            EditFile.HandleException(InvalidFile, ChangeNameBox.Text);
             if(DialogResult.OK ==  MessageBox.Show("The file has been renamed."))
             {
                 this.Hide();
                 Form1 StartForm = new Form1();
                 StartForm.Show();
-            }
-                
-            
+            }        
 
         }
 

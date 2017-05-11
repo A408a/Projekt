@@ -8,19 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChangeDatabase;
+using System.IO;
 
 namespace GUIprototype
 {
     public partial class FileNameError : Form
     {
-        public FileNameError(AutomaticRemoveFromDatabase UpdateDatabase)
+        public FileNameError(FileInfo InvalidFile, AutomaticRemoveFromDatabase EditFile)
         {
             InitializeComponent();
-            ErrorMessage.Text = $"Found invalid article: {UpdateDatabase.FileInformation.Name}.";
-            ChangingDatabase = UpdateDatabase;
+            ErrorMessage.Text = $"Found invalid article: {InvalidFile.Name}.";
+            this.InvalidFile = InvalidFile;
+            this.EditFile = EditFile;
         }
-
-        AutomaticRemoveFromDatabase ChangingDatabase;
+ 
+        FileInfo InvalidFile;
+        AutomaticRemoveFromDatabase EditFile;
 
         private void ErrorMessage_Click(object sender, EventArgs e)
         {
@@ -34,7 +37,7 @@ namespace GUIprototype
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            ChangingDatabase.HandleException("Delete");
+            EditFile.HandleException(InvalidFile,"Delete");
             MessageBox.Show("The file has been deleted.");
             // Not all files are deleted. This needs to be fixed. 
 
@@ -48,9 +51,15 @@ namespace GUIprototype
 
         private void RenameButton_Click(object sender, EventArgs e)
         {
-            RenameFileForm RenameFile = new RenameFileForm(ChangingDatabase);
+            RenameFileForm RenameFile = new RenameFileForm(InvalidFile,EditFile);
             this.Hide();
             RenameFile.Show();
+            
+        }
+
+
+        private void FileNameError_Load(object sender, EventArgs e)
+        {
 
         }
     }

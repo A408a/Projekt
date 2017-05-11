@@ -9,7 +9,7 @@ namespace ChangeDatabase
 {
     public class AutomaticRemoveFromDatabase
     {
-        public List<FileInfo> FileNameError { get; private set; } //= new List<FileInfo>();
+        public List<FileInfo> FileNameError { get; private set; } = new List<FileInfo>();
         public string Dir()
         {
             string path = Directory.GetCurrentDirectory();

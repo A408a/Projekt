@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using ChangeDatabase;
 
 namespace GUIprototype
 {
@@ -38,9 +39,10 @@ namespace GUIprototype
 
         private void RemoveButton_Click(object sender, EventArgs e)
         {
-            ChangeDatabase.ChangeDatabase RemoveArticle;
+//            AddOrRemoveArticle RemoveArticle = new AddOrRemoveArticle();
             // The method does not contain a parameter to enter multible tags. 
             //RemoveArticle.RemoveArticleFromTag()
+            
 
             if (DialogResult.OK == MessageBox.Show("Article has been removed from database tags"))
             {

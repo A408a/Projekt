@@ -86,6 +86,7 @@
             this.Name = "FileNameError";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FileNameError";
+            this.Load += new System.EventHandler(this.FileNameError_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,7 +96,7 @@
 
         private System.Windows.Forms.Label ErrorMessage;
         private System.Windows.Forms.Label UserQuestion;
-        private System.Windows.Forms.Button RemoveButton;
-        private System.Windows.Forms.Button RenameButton;
+        public System.Windows.Forms.Button RemoveButton;
+        public System.Windows.Forms.Button RenameButton;
     }
 }
