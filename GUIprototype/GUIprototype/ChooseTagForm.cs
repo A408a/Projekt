@@ -22,7 +22,11 @@ namespace GUIprototype
 
             NewsTagsBox.CheckOnClick = true;
 
-            string[] Array = (from dir in Directory.GetDirectories(@"C:\Users\Aryan\Dropbox\P1 Projekt\P2\Program\Nyheder_Database") select Path.GetFileNameWithoutExtension(dir)).ToArray();
+            string PathToTags = Directory.GetCurrentDirectory();
+            PathToTags = Path.GetFullPath(Path.Combine(PathToTags, @"..\..\..\..\"));
+            PathToTags = Path.Combine(PathToTags, "Nyheder_Database");
+
+            string[] Array = (from dir in Directory.GetDirectories(PathToTags) select Path.GetFileNameWithoutExtension(dir)).ToArray();
 
             NewsTagsBox.Items.AddRange(Array);
         }
