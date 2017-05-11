@@ -7,18 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChangeDatabase;
 
 namespace GUIprototype
 {
     public partial class RemoveArticleChoices : Form
     {
-        public RemoveArticleChoices(ChangeDatabase.ChangeDatabase RemoveArticle)
+        public RemoveArticleChoices(AddOrRemoveArticle RemoveArticle)
         {
             InitializeComponent();
             this.RemoveArticle = RemoveArticle;
         }
 
-        ChangeDatabase.ChangeDatabase RemoveArticle;
+        AddOrRemoveArticle RemoveArticle;
         private void RemoveArticleChoices_Load(object sender, EventArgs e)
         {
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using JaccardSimilarityLibrary;
 using ChangeDatabase;
+using System.IO;
 
 namespace GUIprototype
 {
@@ -40,39 +41,41 @@ namespace GUIprototype
         {
             // This will update the database automatically. 
             AutomaticRemoveFromDatabase UpdateDatabase = new AutomaticRemoveFromDatabase();
-            try
-            {
-                UpdateDatabase.FindOutdatedFolder();
-                MessageBox.Show("The database has now been updated");
-            }
 
-            catch (ArgumentException)
+            UpdateDatabase.FindOutdatedFolder();
+            if (DialogResult.Yes == MessageBox.Show($"Found {UpdateDatabase.FileNameError.Count} Invalid files. \nDo you want to delete all the articles at once?", "", MessageBoxButtons.YesNo))
             {
-                // If something goes wrong with the file name. 
-                // The user is asked to enter a new name for the file. 
-
-                //TextBox FileNameBox = new TextBox();
-                //FileNameBox.Show();
-                //this.Hide();
+                foreach (FileInfo InvalidFile in UpdateDatabase.FileNameError)
+                {
+                    UpdateDatabase.HandleException(InvalidFile, "Delete");
+                }
 
             }
 
-            catch (FormatException)
+            else
             {
+                foreach (FileInfo InvalidFile in UpdateDatabase.FileNameError)
+                {
+                    // Create only one form:
+                    FileNameError FileNameForm = new FileNameError(InvalidFile, UpdateDatabase);
+                    FileNameForm.Show();
 
-                FileNameError FileNameForm = new FileNameError(UpdateDatabase);
+                    FileNameForm.RemoveButton.Click;
+                   // FileNameForm.Close();
 
-                this.Hide();
-                FileNameForm.Show();
+                    
+                }
 
-                
             }
 
-             
-           // MessageBox.Show(UpdateDatabase.Dir());
+            //                MessageBox.Show($"Found {UpdateDatabase.FileNameError.Count} invalid files. Do you want to edit them or remove them")
+            //MessageBox.Show("The database has now been updated");
 
 
-
+            //FileNameError FileNameForm = new FileNameError(UpdateDatabase);
+            //this.Hide();
+            //FileNameForm.Show();
+            // MessageBox.Show(UpdateDatabase.Dir());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -86,7 +89,7 @@ namespace GUIprototype
             {
                 Text = openFileDialog1.SafeFileName;
 
-                ChangeDatabase.ChangeDatabase RemoveArticle = new ChangeDatabase.ChangeDatabase(Text);
+                ChangeDatabase.AddOrRemoveArticle RemoveArticle = new ChangeDatabase.AddOrRemoveArticle(Text);
 
                 RemoveArticleChoices RemoveArticleForm = new RemoveArticleChoices(RemoveArticle);
 
