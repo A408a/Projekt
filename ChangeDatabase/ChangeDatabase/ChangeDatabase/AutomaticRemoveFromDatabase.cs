@@ -9,7 +9,6 @@ namespace ChangeDatabase
 {
     public class AutomaticRemoveFromDatabase
     {
-        public List<FileInfo> FileNameError { get; private set; } = new List<FileInfo>();
         public string Dir()
         {
             string path = Directory.GetCurrentDirectory();
@@ -72,39 +71,20 @@ namespace ChangeDatabase
                 }
             }
             // If the file name has an error, like an invalid date: 39_14_2090, or does not meet the requirements: Name_01_01_2010.
-            // Catched exceptions is sent to a list of failed files, which is then later handled.
+            // Catched exceptions is deleted.
             catch (FormatException)
             {
-                FileNameError.Add(FileInformation);
+                RemoveFile(FileInformation);
             }
             catch (InvalidDateException)
             {
-                FileNameError.Add(FileInformation);
+                RemoveFile(FileInformation);
             }
         }
 
         private void RemoveFile(FileInfo FileInformation)
         {
             FileInformation.Delete();
-        }
-
-
-        // Handles exceptions. Is called from GUI
-        public void HandleException(FileInfo FileInformation, string UserChoice)
-        {
-            if (UserChoice == "Delete")
-                FileInformation.Delete();
-            else
-            {
-                // Sets title as the input, with date as current day.
-                string Title = "_" + UserChoice + ".txt";
-                string CurrentDate = DateTime.Now.ToString("dd_MM_yyyy_");
-                string TargetPath = FileInformation.DirectoryName;
-
-                Title = "\\" + CurrentDate + Title;
-                TargetPath = Path.Combine(TargetPath + Title);
-                File.Move(FileInformation.FullName, TargetPath);
-            }
         }
     }
 }
