@@ -9,7 +9,7 @@ namespace ChangeDatabase
 {
     public class AutomaticRemoveFromDatabase
     {
-        public FileInfo FileInformation { get; private set; }
+        public List<FileInfo> FileNameError { get; private set; } //= new List<FileInfo>();
         public string Dir()
         {
             string path = Directory.GetCurrentDirectory();
@@ -50,26 +50,37 @@ namespace ChangeDatabase
 
         private void FindOutdatedFile(string File, FileInfo FileInformation)
         {
-            this.FileInformation = FileInformation;
-            int month = Int32.Parse(File.Substring(3, 2));
-            int year = Int32.Parse(File.Substring(6, 4));
-
-            // If an article has an invalid Date.
-            if (year > DateTime.Now.Year || year < 0 || month > 12 || month < 0)
-                throw new ArgumentException();
-
-            // If current year is equal to article year
-            if (year == DateTime.Now.Year)
+            try
             {
-                // If article is less than 3 months old
-                if (month < DateTime.Now.Month - 3)
+                int month = Int32.Parse(File.Substring(3, 2));
+                int year = Int32.Parse(File.Substring(6, 4));
+
+                // If an article has an invalid Date.
+                if (year > DateTime.Now.Year || year < 0 || month > 12 || month < 0)
+                    throw new InvalidDateException();
+
+                // If current year is equal to article year
+                if (year == DateTime.Now.Year)
+                {
+                    // If article is less than 3 months old
+                    if (month < DateTime.Now.Month - 3)
+                        RemoveFile(FileInformation);
+                }
+                else
+                {
                     RemoveFile(FileInformation);
+                }
             }
-            else
+            // If the file name has an error, like an invalid date: 39_14_2090, or does not meet the requirements: Name_01_01_2010.
+            // Catched exceptions is sent to a list of failed files, which is then later handled.
+            catch (FormatException)
             {
-                RemoveFile(FileInformation);
+                FileNameError.Add(FileInformation);
             }
-
+            catch (InvalidDateException)
+            {
+                FileNameError.Add(FileInformation);
+            }
         }
 
         private void RemoveFile(FileInfo FileInformation)
@@ -79,7 +90,7 @@ namespace ChangeDatabase
 
 
         // Handles exceptions. Is called from GUI
-        public void HandleException(string UserChoice)
+        public void HandleException(FileInfo FileInformation, string UserChoice)
         {
             if (UserChoice == "Delete")
                 FileInformation.Delete();

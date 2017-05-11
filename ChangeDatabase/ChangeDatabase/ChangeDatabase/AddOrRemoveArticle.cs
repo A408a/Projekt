@@ -7,23 +7,19 @@ using System.IO;
 
 namespace ChangeDatabase
 {
-    public class ChangeDatabase
+    public class AddOrRemoveArticle
     {
         #region Members
         private List<string> Article = new List<string>();
-
         private string Source = "TestFolder"; // Change_Database
-        private string Target; // Navnet på tag.
         private string FileName;
         private string SourcePath;
-        private string TargetPath;
         private string path;
         private string TrueOrFalse;
-        private string Tag;
         #endregion
 
         // Input from User Input or Fake News result. - BRUGES TIL ADD
-        public ChangeDatabase(List<string> Article /* string TrueOrFalse */) //Input her vil være den tekst som skal rettes. Hvad indlæses den som? Tror List.
+        public AddOrRemoveArticle(List<string> Article /* string TrueOrFalse */) //Input her vil være den tekst som skal rettes. Hvad indlæses den som? Tror List.
         {
             this.Article = Article;
             // this.TrueOrFalse = TrueOrFalse;
@@ -31,22 +27,11 @@ namespace ChangeDatabase
         }
 
         // Removes all instances of certain article.
-        public ChangeDatabase(string FileName)
+        public AddOrRemoveArticle(string FileName)
         {
             this.FileName = FileName;
             PathMaker();
         }
-
-        // Removes single instance of certain article.
-        /*public ChangeDatabase(string FileName, string Tag, string TrueOrFalse)
-        {
-            this.FileName = FileName;
-            this.TrueOrFalse = TrueOrFalse;
-            this.Tag = Tag;
-            //Something for the tag.
-            PathMaker();
-            //            TargetPath = Path.Combine(path, Target);
-        }*/
 
         private void PathMaker()
         {
@@ -80,21 +65,21 @@ namespace ChangeDatabase
         }
 
         //Denne skal måske fjernes, hvis den ikke 
-        public void RemoveArticleFromTag(string Tag, string TrueOrFalse)
+        public void RemoveArticleFromTag(string Tag)
         {
-            this.Tag = Tag;
-            this.TrueOrFalse = TrueOrFalse;
-
-            // Creating source and destionation path for file.
-            string TargetPath = Path.Combine(SourcePath, Tag, TrueOrFalse, FileName);
-            FileInfo Article = new FileInfo(TargetPath);
-            if (Article.Exists)
+            // Creating source and destionation path for True file instance.
+            string TrueTargetPath = Path.Combine(SourcePath, Tag, TrueOrFalse, FileName);
+            FileInfo TrueArticle = new FileInfo(TrueTargetPath);
+            if (TrueArticle.Exists)
             {
-                Article.Delete();
+                TrueArticle.Delete();
             }
-            else
+            // Creating source and destionation path for False file instance.
+            string FalseTargetPath = Path.Combine(SourcePath, Tag, TrueOrFalse, FileName);
+            FileInfo FalseArticle = new FileInfo(FalseTargetPath);
+            if(FalseArticle.Exists)
             {
-                Console.WriteLine("Article not found.");
+                FalseArticle.Delete();
             }
         }
 

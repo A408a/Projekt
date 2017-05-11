@@ -25,8 +25,8 @@ namespace ChangeDatabase
                 ChangeDatabase Run = new ChangeDatabase(TextA.Words);
                 Run.AddArticle();
                 Console.ReadLine();*/
-                ChangeDatabase Run1 = new ChangeDatabase("test.txt");
-                Run1.RemoveArticleFromTag("abc", "True");
+                AddOrRemoveArticle Run1 = new AddOrRemoveArticle("test.txt");
+                Run1.RemoveArticleFromTag("abc");
             }
         }
     }

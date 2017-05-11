@@ -48,7 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutomaticRemoveFromDatabase.cs" />
-    <Compile Include="ChangeDatabase.cs" />
+    <Compile Include="AddOrRemoveArticle.cs" />
+    <Compile Include="InvalidDateException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
