@@ -29,9 +29,19 @@ namespace GUIprototype
         {
             
 
-            CheckLinkTrustworthiness link = new CheckLinkTrustworthiness(URLbox.Text);
+            CheckLinkTrustworthiness link = new CheckLinkTrustworthiness();
 
-            if (link.DoesLinkToFakeNews)
+            try
+            {
+                link.IsLinkValid(URLbox.Text);
+            }
+
+            catch (ArgumentException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+            if (link.CheckLink(URLbox.Text))
             {
                 this.Hide();
                 // Create instance of form CheckLinkResult and pass the current CheckText as a parameter to the constructer.

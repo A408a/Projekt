@@ -64,12 +64,6 @@
     <Compile Include="ChooseTagForm.Designer.cs">
       <DependentUpon>ChooseTagForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileNameError.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FileNameError.Designer.cs">
-      <DependentUpon>FileNameError.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,9 +104,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChooseTagForm.resx">
       <DependentUpon>ChooseTagForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FileNameError.resx">
-      <DependentUpon>FileNameError.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

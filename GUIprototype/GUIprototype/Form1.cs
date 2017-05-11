@@ -43,39 +43,11 @@ namespace GUIprototype
             AutomaticRemoveFromDatabase UpdateDatabase = new AutomaticRemoveFromDatabase();
 
             UpdateDatabase.FindOutdatedFolder();
-            if (DialogResult.Yes == MessageBox.Show($"Found {UpdateDatabase.FileNameError.Count} Invalid files. \nDo you want to delete all the articles at once?", "", MessageBoxButtons.YesNo))
+            foreach (FileInfo InvalidFile in UpdateDatabase.FileNameError)
             {
-                foreach (FileInfo InvalidFile in UpdateDatabase.FileNameError)
-                {
-                    UpdateDatabase.HandleException(InvalidFile, "Delete");
-                }
-
+                UpdateDatabase.HandleException(InvalidFile, "Delete");
             }
-
-            else
-            {
-                foreach (FileInfo InvalidFile in UpdateDatabase.FileNameError)
-                {
-                    // Create only one form:
-                    FileNameError FileNameForm = new FileNameError(InvalidFile, UpdateDatabase);
-                    FileNameForm.Show();
-
-                    FileNameForm.RemoveButton.Click;
-                   // FileNameForm.Close();
-
-                    
-                }
-
-            }
-
-            //                MessageBox.Show($"Found {UpdateDatabase.FileNameError.Count} invalid files. Do you want to edit them or remove them")
-            //MessageBox.Show("The database has now been updated");
-
-
-            //FileNameError FileNameForm = new FileNameError(UpdateDatabase);
-            //this.Hide();
-            //FileNameForm.Show();
-            // MessageBox.Show(UpdateDatabase.Dir());
+            MessageBox.Show("Update of database has been performed");
         }
 
         private void Form1_Load(object sender, EventArgs e)
