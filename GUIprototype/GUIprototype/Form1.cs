@@ -43,10 +43,6 @@ namespace GUIprototype
             AutomaticRemoveFromDatabase UpdateDatabase = new AutomaticRemoveFromDatabase();
 
             UpdateDatabase.FindOutdatedFolder();
-            foreach (FileInfo InvalidFile in UpdateDatabase.FileNameError)
-            {
-                UpdateDatabase.HandleException(InvalidFile, "Delete");
-            }
             MessageBox.Show("Update of database has been performed");
         }
 
