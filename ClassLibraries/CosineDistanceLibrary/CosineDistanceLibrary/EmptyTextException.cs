@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CosineSimilarityLibrary
 {
-    class EmptyTextException : Exception
+    public class EmptyTextException : Exception
     {
         public EmptyTextException() : base()
         { }
