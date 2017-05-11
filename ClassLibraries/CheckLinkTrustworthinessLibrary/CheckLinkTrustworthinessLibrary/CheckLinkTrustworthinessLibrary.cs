@@ -7,14 +7,6 @@ namespace CheckLinkTrustworthinessLibrary
 {
     public class CheckLinkTrustworthiness
     {
-        //public CheckLinkTrustworthiness(string linkFromPrompt)
-        //{
-        //    this.LinkFromPrompt = linkFromPrompt;
-        //    this.DoesLinkToFakeNews = false;
-
-        //    //IsLinkValid();
-        //}
-
         //Checks if linkToCheck is in the correct form.
         public bool IsLinkValid(string linkToCheck)
         {
