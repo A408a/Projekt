@@ -48,8 +48,6 @@ namespace CosineSimilarityLibrary.Tests
         [Test()]
         public void PrintPercentValueLessThanTest()
         {
-            //Input1.Add("people");
-            //Input2.Add("people");
             var test = new CalculateCosine(Input1, Input2);
 
             Assert.LessOrEqual(test.Procent, 100);
@@ -82,7 +80,7 @@ namespace CosineSimilarityLibrary.Tests
         }
 
         [Test()]
-        public void ReadNounTest()
+        public void ReadNounIsNotEmptyTest()
         {
             var test = new CalculateCosine(Input1, Input2);
 
@@ -90,7 +88,7 @@ namespace CosineSimilarityLibrary.Tests
         }
 
         [Test()]
-        public void CreateVectorVecATest()
+        public void CreateVectorVecANotNullTest()
         {
             var test = new CalculateCosine(Input1, Input2);
 
@@ -98,7 +96,7 @@ namespace CosineSimilarityLibrary.Tests
         }
 
         [Test()]
-        public void CreateVectorVecBTest()
+        public void CreateVectorVecBNotNullTest()
         {
             var test = new CalculateCosine(Input1, Input2);
 
@@ -109,7 +107,6 @@ namespace CosineSimilarityLibrary.Tests
         public void MatchNounTest()
         {
             var test = new CalculateCosine(Input1, Input2);
-            //string[] Pattern = new string[3] { "ad", "head", "people" };
             string Pattern = "ad";
             List<string> Input = new List<string>();
             Input.Add("people");
